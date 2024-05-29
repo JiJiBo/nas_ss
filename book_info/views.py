@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from my_sql_db.models import SmallSay
+from my_sql_db.models import SmallSay, Bgm, Voice
 from utils.utils.Result import *
 from utils.utils.TokenUtils import get_user_id
 
@@ -53,5 +53,52 @@ def get_all_novels(request):
             novels_data.append(novel_data)
 
         return getOkResult({'count': paginator.count, 'results': novels_data})
+    else:
+        return getErrorResult('no support method')
+
+
+@csrf_exempt
+def get_all_bgm(request):
+    if request.method == 'GET':
+        # 查询所有小说信息
+        all_bgm = Bgm.objects.all()
+
+        # 构造返回数据
+        bgms_data = []
+        for bgm in all_bgm:
+            bgm_data = {
+                'id': bgm.id,
+                'bgm': bgm.bgm,
+                'path': bgm.path,
+                'time': bgm.time,
+                # 其他字段按需添加
+            }
+            bgms_data.append(bgm_data)
+
+        return getOkResult({'count': len(bgms_data), 'results': bgms_data})
+    else:
+        return getErrorResult('no support method')
+
+
+@csrf_exempt
+def get_all_voice(request):
+    if request.method == 'GET':
+        # 查询所有小说信息
+        all_voice = Voice.objects.all()
+
+        # 构造返回数据
+        voices_data = []
+        for voice in all_voice:
+            voice_data = {
+                'id': voice.id,
+                'name': voice.name,
+                'value': voice.value,
+                'msg': voice.msg,
+                'time': voice.time,
+                # 其他字段按需添加
+            }
+            voices_data.append(voice_data)
+
+        return getOkResult({'count': len(voices_data), 'results': voices_data})
     else:
         return getErrorResult('no support method')
