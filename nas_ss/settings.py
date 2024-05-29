@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "get_txt.apps.GetTxtConfig",
     "back_progress.apps.BackProgressConfig",
-    "my_sql_db.apps.MySqlDbConfig"
+    "my_sql_db.apps.MySqlDbConfig",
+    "userinfo.apps.UserinfoConfig"
 ]
 
 MIDDLEWARE = [
