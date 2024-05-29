@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+from my_sql_db.models import User
 from utils.utils.Result import getErrorResult, getOkResult
 
 
@@ -17,12 +18,12 @@ def login(request):
         password = data.get('password')
         if not name or not password:
             return getErrorResult('Name and password are required')
-        user = AbstractUser.objects.filter(username=name).first()
+        user = User.objects.filter(name=name).first()
         if user is None:
             return getErrorResult('User not found')
         if not user.pass_field == password:
             return getErrorResult('Incorrect password')
-        return getOkResult({"name": user.username})
+        return getOkResult({"name": user.name})
     else:
         return getErrorResult('Only POST method allowed')
 
@@ -36,11 +37,11 @@ def register(request):
         print(name, password)
         if not name or not password:
             return getErrorResult('Name and password are required')
-        if AbstractUser.objects.filter(username=name).exists():
+        if User.objects.filter(name=name).exists():
             print("User already exists")
             return getErrorResult('用户已存在')
         try:
-            AbstractUser.objects.create_user(username=name, password=password)
+            User.objects.create_user(name=name, pass_field=password)
             print("success")
             return getOkResult('User created successfully')
         except Exception as e:
