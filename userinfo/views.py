@@ -1,12 +1,16 @@
 import json
+import uuid
 
 from django.contrib.auth.models import AbstractUser
+from django.core.cache.backends import redis
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from my_sql_db.models import User
 from utils.utils.Result import getErrorResult, getOkResult
+from utils.utils.jwt import create_access_token, create_refresh_token
+
 
 @csrf_exempt
 def login(request):
@@ -21,7 +25,10 @@ def login(request):
             return getErrorResult('User not found')
         if not user.pass_field == password:
             return getErrorResult('Incorrect password')
-        return getOkResult({"name": user.name})
+        random_string = str(uuid.uuid4())
+        user.token = random_string
+        user.save()
+        return {"token": random_string}
     else:
         return getErrorResult('Only POST method allowed')
 

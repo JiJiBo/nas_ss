@@ -178,6 +178,7 @@ class User(models.Model):
     pass_field = models.TextField(db_column='pass', blank=True,
                                   null=True)  # Field renamed because it was a Python reserved word.
     logo = models.TextField(blank=True, null=True)
+    token = models.TextField(blank=True, null=True)
     objects = models.manager
 
     class Meta:

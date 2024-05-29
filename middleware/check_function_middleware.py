@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.urls import resolve
 from django.utils.deprecation import MiddlewareMixin
 
+from my_sql_db.models import User
 from utils.utils.Result import getErrorResult
-from utils.utils.jwt import identify_token
 
 
 class CheckFunctionMiddleware(MiddlewareMixin):
@@ -14,7 +14,7 @@ class CheckFunctionMiddleware(MiddlewareMixin):
 
     # 这个函数在所有视图函数之前被触发，用来检验token的合法性刚好
     def process_request(self, request):
-        jwtToken = request.META['NAS_TOKEN']
+        token = request.META['NAS_TOKEN']
         # 获取函数的名称
         path = request.path
         match = resolve(path)
@@ -22,7 +22,7 @@ class CheckFunctionMiddleware(MiddlewareMixin):
         # 如果不在排除表中则触发
         if request_name not in self.EXCLUDED_FUNCTIONS:
             print("this func is not in the middleware dict")
-            res = identify_token(jwtToken)
+            user_object = User.objects.filter(token=token).first()
             # 检验不通过则返回错误
-            if not res:
-                return getErrorResult("please login", code=400)
+            if not user_object:
+                return getErrorResult("please login", code=401)

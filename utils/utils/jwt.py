@@ -1,36 +1,35 @@
+from aiohttp.abc import HTTPException
+
 import jwt
 import datetime
 
 from nas_ss.settings import SECRET_KEY
+from datetime import datetime, timedelta
+
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+REFRESH_TOKEN_EXPIRE_HOURS = 24
 
 
-def create_jwtToken(openid):
-    expire_time = datetime.datetime.utcnow() + datetime.timedelta(days=7)
-    headers = {
-        'typ': 'jwt',
-        'alg': 'HS256'
-    }
-
-    payload = {
-        'openid': openid,
-        "exp": expire_time
-    }
-    result = jwt.encode(payload=payload, key=SECRET_KEY, algorithm='HS256', headers=headers)
-    return result
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
 
 
-def identify_token(token):
-    try:
-        verified_payload = jwt.decode(token, key=SECRET_KEY, algorithms="HS256")
-        # 验证通过返回payload中的信息
-        return verified_payload
-    # 不通过返回报错
-    except jwt.ExpiredSignatureError:
-        print('token已失效')
+def create_refresh_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(hours=REFRESH_TOKEN_EXPIRE_HOURS)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
+
+
+def verify_token(token: str):
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    username: str = payload.get("sub")
+    if username is None:
         return False
-    except jwt.DecodeError:
-        print('token认证失败')
-        return False
-    except jwt.InvalidTokenError:
-        print('非法的token')
-        return False
+    return True
