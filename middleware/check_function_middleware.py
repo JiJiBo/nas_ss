@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.urls import resolve
 from django.utils.deprecation import MiddlewareMixin
 
+from utils.utils.Result import getErrorResult
 from utils.utils.jwt import identify_token
 
 
@@ -24,4 +25,4 @@ class CheckFunctionMiddleware(MiddlewareMixin):
             res = identify_token(jwtToken)
             # 检验不通过则返回错误
             if not res:
-                return HttpResponse("TOKEN ERROR")
+                return getErrorResult("please login")
