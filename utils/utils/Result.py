@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 
 
-def getErrorResult(error):
-    return JsonResponse({'error': error, 'code': 500, 'msg': 'error'}, status=200)
+def getErrorResult(error, code=500):
+    return JsonResponse({'error': error, 'code': code, 'msg': 'error'}, status=200)
 
 
 def getOkResult(data):
