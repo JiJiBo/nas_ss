@@ -185,3 +185,44 @@ def get_a_bgm(request):
         return getOkResult(bgm_data)
     else:
         return getErrorResult('no support method')
+
+
+@csrf_exempt
+def get_novel(request):
+    """获取小说信息"""
+    if request.method == 'GET':
+        try:
+            novel_id = request.GET.get('novel_id')
+            novel = SmallSay.objects.get(id=novel_id)
+            download_progress = len(Books.objects.filter(book_id=novel.id, get_step=1))
+            conversion_progress = len(Books.objects.filter(book_id=novel.id, get_step=3))
+            add_back_progress = len(Books.objects.filter(book_id=novel.id, get_step=6))
+            conversion_fail = len(Books.objects.filter(book_id=novel.id, get_step=4))
+            add_back_fail = len(Books.objects.filter(book_id=novel.id, get_step=7))
+            novel_data = {
+                'id': novel.id,
+                'name': novel.name,
+                'link': novel.link,
+                'last_updated': novel.last_updated.strftime("%Y-%m-%d %H:%M:%S") if novel.last_updated else None,
+                'background_music': novel.background_music,
+                'download_progress': download_progress,
+                'conversion_progress': conversion_progress,
+                'conversion_max': novel.conversion_max,
+                'add_back_progress': add_back_progress,
+                'add_back_max': novel.add_back_max,
+                'download_max': novel.download_max,
+                'conversion_fail': conversion_fail,
+                'add_back_fail': add_back_fail,
+                'background_music_id': novel.background_music_id,
+                'voice_id': novel.voice_id,
+                'voice': novel.voice,
+                'time': novel.time,
+                # 'book_datas': book_datas
+            }
+            return getOkResult(novel_data)
+        except Exception as e:
+            e = str(e)
+            print(e)
+            return getErrorResult(e)
+    else:
+        return getErrorResult('no support method')
