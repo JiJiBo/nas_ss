@@ -25,4 +25,9 @@ urlpatterns = [
     path("register", register, name="register"),
     path("logout", logout, name="logout"),
     path("get_all_novels", get_all_novels, name="get_all_novels"),
+    path("get_all_bgm", get_all_bgm, name="get_all_bgm"),
+    path("get_all_voice", get_all_voice, name="get_all_voice"),
+    path("get_filtered_books", get_filtered_books, name="get_filtered_books"),
+    path("get_a_voice", get_a_voice, name="get_a_voice"),
+    path("get_a_bgm", get_a_bgm, name="get_a_bgm"),
 ]

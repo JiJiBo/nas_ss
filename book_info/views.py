@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from my_sql_db.models import SmallSay, Bgm, Voice
+from my_sql_db.models import SmallSay, Bgm, Voice, Books
 from utils.utils.Result import *
 from utils.utils.TokenUtils import get_user_id
 
@@ -100,5 +100,88 @@ def get_all_voice(request):
             voices_data.append(voice_data)
 
         return getOkResult({'count': len(voices_data), 'results': voices_data})
+    else:
+        return getErrorResult('no support method')
+
+
+@csrf_exempt
+def get_filtered_books(request):
+    """根据book_id和get_step筛选书籍，并进行分页"""
+    if request.method == 'GET':
+        # 从请求中获取筛选参数
+        book_id = request.GET.get('book_id')
+        get_step = request.GET.get('get_step')
+
+        # 创建查询基础
+        query = Books.objects.all()
+
+        # 根据book_id筛选
+        if book_id is not None:
+            query = query.filter(book_id=book_id)
+
+        # 根据get_step筛选
+        if get_step is not None:
+            query = query.filter(get_step=get_step)
+        query = query.order_by('page')
+        # 分页设置
+        page_number = request.GET.get('page', 1)  # 默认为第一页
+        paginator = Paginator(query, 777)  # 每页显示10条数据
+
+        try:
+            books_page = paginator.page(page_number)
+        except PageNotAnInteger:
+            # 如果页数不是整数，返回第一页
+            books_page = paginator.page(1)
+        except EmptyPage:
+            # 如果页数超出范围，返回最后一页
+            return getErrorResult('out of range')
+
+        # 构造返回数据
+        books_data = [{'id': book.id,
+                       'book_id': book.book_id,
+                       'path': book.path,
+                       'get_step': book.get_step,
+                       'time': book.time,
+                       'dir': book.dir,
+                       'name': book.name,
+                       } for book in books_page]
+
+        return getOkResult({'count': paginator.count, 'results': books_data, })
+    else:
+        return getErrorResult('no support method')
+
+
+@csrf_exempt
+def get_a_voice(request):
+    if request.method == 'GET':
+        # 从请求中获取筛选参数
+        voice_id = request.GET.get('voice_id')
+        voice = Voice.objects.get(id=voice_id)
+        voice_data = {
+            'id': voice.id,
+            'name': voice.name,
+            'value': voice.value,
+            'msg': voice.msg,
+            'time': voice.time,
+            # 其他字段按需添加
+        }
+        return getOkResult(voice_data)
+    else:
+        return getErrorResult('no support method')
+
+
+@csrf_exempt
+def get_a_bgm(request):
+    if request.method == 'GET':
+        # 从请求中获取筛选参数
+        bgm_id = request.GET.get('bgm_id')
+        bgm = Bgm.objects.get(id=bgm_id)
+        bgm_data = {
+            'id': bgm.id,
+            'bgm': bgm.bgm,
+            'path': bgm.path,
+            'time': bgm.time,
+        }
+        return getOkResult(bgm_data)
     else:
         return getErrorResult('no support method')
