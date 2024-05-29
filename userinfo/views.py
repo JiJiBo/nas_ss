@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+from utils.utils.Result import getErrorResult, getOkResult
+
 
 # Create your views here.
 @csrf_exempt
@@ -14,17 +16,15 @@ def login(request):
         name = data.get('name')
         password = data.get('password')
         if not name or not password:
-            return JsonResponse({'error': 'Name and password are required', 'code': 500}, status=200)
+            return getErrorResult('Name and password are required')
         user = AbstractUser.objects.filter(username=name).first()
         if user is None:
-            return JsonResponse({'error': 'User not found', 'code': 500}, status=200)
+            return getErrorResult('User not found')
         if not user.pass_field == password:
-            return JsonResponse({'error': 'Incorrect password', 'code': 500}, status=200)
-        return JsonResponse(
-            {'message': 'Login successful', 'data': {"id": user.id, "name": user.name, "logo": user.logo}, 'code': 200},
-            status=200)
+            return getErrorResult('Incorrect password')
+        return getOkResult({"name": user.username})
     else:
-        return JsonResponse({'error': 'Only POST method allowed', 'code': 500}, status=200)
+        return getErrorResult('Only POST method allowed')
 
 
 @csrf_exempt
@@ -35,17 +35,17 @@ def register(request):
         password = data.get('password')
         print(name, password)
         if not name or not password:
-            return JsonResponse({'error': 'Name and password are required', 'code': 500}, status=200)
+            return getErrorResult('Name and password are required')
         if AbstractUser.objects.filter(username=name).exists():
             print("User already exists")
-            return JsonResponse({'error': '用户已存在', 'code': 500}, status=200)
+            return getErrorResult('用户已存在')
         try:
             AbstractUser.objects.create_user(username=name, password=password)
             print("success")
-            return JsonResponse({'message': 'User created successfully', 'code': 200}, status=200)
+            return getOkResult('User created successfully')
         except Exception as e:
             print("error" + str(e))
-            return JsonResponse({'error': str(e), 'code': 500}, status=200)
+            return getErrorResult(str(e))
     else:
         print("error")
-        return JsonResponse({'error': 'Only POST method allowed', 'code': 500}, status=200)
+        return getErrorResult('Only POST method allowed')

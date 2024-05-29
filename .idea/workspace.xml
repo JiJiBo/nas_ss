@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="加入userinfo模块">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_sql_db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_sql_db/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/utils/Result.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nas_ss/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nas_ss/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userinfo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/userinfo/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +192,7 @@
       <option name="presentableId" value="Default" />
       <updated>1716940802300</updated>
       <workItem from="1716940815541" duration="7890000" />
-      <workItem from="1716957959939" duration="1513000" />
+      <workItem from="1716957959939" duration="1875000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -340,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716959057077</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="加入userinfo模块">
+      <option name="closed" value="true" />
+      <created>1716959480103</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716959480103</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
