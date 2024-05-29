@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from book_info.views import *
 from userinfo.views import *
 
 urlpatterns = [
@@ -23,4 +24,5 @@ urlpatterns = [
     path("login", login, name="login"),
     path("register", register, name="register"),
     path("logout", logout, name="logout"),
+    path("get_all_novels", get_all_novels, name="get_all_novels"),
 ]
