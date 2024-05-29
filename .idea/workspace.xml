@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="加入ftp客户端，并修改了工具代码的路径">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_sql_db/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nas_ss/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nas_ss/settings.py" afterDir="false" />
+    <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="加入数据库">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nas_ss.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nas_ss.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_sql_db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_sql_db/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,21 +30,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JiJiBo"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JiJiBo&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/JiJiBo/nas_ss.git",
-    "accountId": "e2233d8e-7197-474d-aab8-08897bd03a2b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JiJiBo/nas_ss.git&quot;,
+    &quot;accountId&quot;: &quot;e2233d8e-7197-474d-aab8-08897bd03a2b&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2h7Mk5k1AwbWWzcJHkQCUT2rxbw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -59,8 +59,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.manage.executor": "Run",
     "Python.split_txt.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
@@ -87,7 +89,29 @@
       <recent name="$PROJECT_DIR$/back_progress/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.split_txt">
+  <component name="RunManager" selected="Python.manage">
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="nas_ss" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="split_txt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="nas_ss" />
       <option name="ENV_FILES" value="" />
@@ -135,8 +159,13 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.manage" />
+      <item itemvalue="Python.split_txt" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.manage" />
         <item itemvalue="Python.split_txt" />
       </list>
     </recent_temporary>
@@ -144,8 +173,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
-        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -157,7 +185,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716940802300</updated>
-      <workItem from="1716940815541" duration="6198000" />
+      <workItem from="1716940815541" duration="7890000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -263,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716946450119</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="加入数据库">
+      <option name="closed" value="true" />
+      <created>1716947205469</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716947205469</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +327,8 @@
     <MESSAGE value="加入添加背景音乐和生成音频" />
     <MESSAGE value="加入分割小说的方法" />
     <MESSAGE value="加入ftp客户端，并修改了工具代码的路径" />
-    <option name="LAST_COMMIT_MESSAGE" value="加入ftp客户端，并修改了工具代码的路径" />
+    <MESSAGE value="加入数据库" />
+    <option name="LAST_COMMIT_MESSAGE" value="加入数据库" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/nas_ss$split_txt.coverage" NAME="split_txt Coverage Results" MODIFIED="1716945973326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress" />
