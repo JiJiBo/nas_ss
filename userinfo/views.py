@@ -1,6 +1,7 @@
 import json
 import uuid
 
+import jwt
 from django.contrib.auth.models import AbstractUser
 from django.core.cache.backends import redis
 from django.http import JsonResponse
@@ -8,8 +9,15 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from my_sql_db.models import User
+from nas_ss import settings
 from utils.utils.Result import getErrorResult, getOkResult
-from utils.utils.jwt import create_access_token, create_refresh_token
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
+from django.contrib.auth import get_user_model
 
 
 @csrf_exempt
@@ -25,10 +33,25 @@ def login(request):
             return getErrorResult('User not found')
         if not user.pass_field == password:
             return getErrorResult('Incorrect password')
-        random_string = str(uuid.uuid4())
-        user.token = random_string
+        import jwt
+        import datetime
+
+        # 构造header
+        headers = {
+            'typ': 'jwt',
+            'alg': 'HS256'
+        }
+        # 构造payload
+        expiration_time = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # 设置有效时间为30分钟
+        payload = {
+            'user_id': user.id,  # 自定义用户ID
+            'username': user.name,  # 自定义用户名
+            'exp': expiration_time  # 有效时间为30分钟
+        }
+        token = jwt.encode(payload=payload, key=settings.SECRET_KEY, algorithm='HS256', headers=headers)
+        user.token = token
         user.save()
-        return {"token": random_string}
+        return getOkResult({"token": token})
     else:
         return getErrorResult('Only POST method allowed')
 
@@ -54,4 +77,33 @@ def register(request):
             return getErrorResult(str(e))
     else:
         print("error")
+        return getErrorResult('Only POST method allowed')
+
+
+@csrf_exempt
+def logout(request):
+    if request.method == 'POST':
+        # 通常，令牌会从请求的Authorization头部中获取
+        token = request.headers.get('Authorization')
+        if not token:
+            return getErrorResult('Token is required for logout')
+
+        try:
+            # 解码令牌以获取用户信息
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            user_id = payload['user_id']
+            user = User.objects.get(id=user_id)
+
+            # 将用户的令牌字段清空
+            user.token = None
+            user.save()
+
+            return getOkResult('You have been logged out successfully')
+        except jwt.ExpiredSignatureError:
+            return getErrorResult('Token is expired')
+        except jwt.InvalidTokenError:
+            return getErrorResult('Invalid token')
+        except User.DoesNotExist:
+            return getErrorResult('User not found')
+    else:
         return getErrorResult('Only POST method allowed')
