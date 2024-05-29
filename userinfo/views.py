@@ -8,8 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 from my_sql_db.models import User
 from utils.utils.Result import getErrorResult, getOkResult
 
-
-# Create your views here.
 @csrf_exempt
 def login(request):
     if request.method == 'POST':
