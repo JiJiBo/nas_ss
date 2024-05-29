@@ -173,16 +173,7 @@ class SmallSay(models.Model):
         db_table = 'small_say'
 
 
-class User(models.Model):
-    name = models.TextField(blank=True, null=True)
-    pass_field = models.TextField(db_column='pass', blank=True,
-                                  null=True)  # Field renamed because it was a Python reserved word.
-    logo = models.TextField(blank=True, null=True)
-    objects = models.manager
 
-    class Meta:
-        managed = False
-        db_table = 'user'
 
 
 class Voice(models.Model):
