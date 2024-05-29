@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="加入ftp客户端，并修改了工具代码的路径">
-      <change beforePath="$PROJECT_DIR$/back_progress/utils/ftp_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_progress/utils/ftp_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_sql_db/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nas_ss/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nas_ss/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +62,7 @@
     "Python.split_txt.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/nas/PycharmProjects/nas_ss/back_progress",
     "node.js.detected.package.eslint": "true",
@@ -148,7 +157,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716940802300</updated>
-      <workItem from="1716940815541" duration="5861000" />
+      <workItem from="1716940815541" duration="6198000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -259,6 +268,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

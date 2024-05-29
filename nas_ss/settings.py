@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+from back_progress.utils.config import *
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -25,8 +26,25 @@ SECRET_KEY = "django-insecure-x$w0bicj714v64_$4shl#5gc)mprk#tnw*p3a(6b90o_(clr8f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+# 数据库配置
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # 更改为mysql
 
+        'NAME': sql_NAME,  # testsql数据库名
+
+        'USER': sql_USER,  # 数据库的用户名
+
+        'PASSWORD': sql_PASSWORD,  # 密码
+
+        'HOST': sql_HOST,  # 本地地址，不是远程操作无需填写地址
+
+        'PORT': sql_PORT,  # 端口号，默认为3306
+
+    }
+
+}
 
 # Application definition
 
@@ -38,7 +56,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "get_txt.apps.GetTxtConfig",
-    "back_progress.apps.BackProgressConfig"
+    "back_progress.apps.BackProgressConfig",
+    "my_sql_db.apps.MySqlDbConfig"
 ]
 
 MIDDLEWARE = [
@@ -72,7 +91,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "nas_ss.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -82,7 +100,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -102,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -113,7 +129,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
