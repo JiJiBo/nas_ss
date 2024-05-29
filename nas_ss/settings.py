@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     "back_progress.apps.BackProgressConfig",
     "my_sql_db.apps.MySqlDbConfig",
     "userinfo.apps.UserinfoConfig",
-    "utils.apps.UtilsConfig"
 ]
 
 MIDDLEWARE = [
