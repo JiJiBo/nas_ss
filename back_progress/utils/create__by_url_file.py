@@ -12,12 +12,9 @@ from utils.utils.TimeUtils import time_to_time_length
 class CreateByUrlFile:
     def __init__(self, txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10,
-                 encoding="utf-8",
-                 title_pattern=r"第[一二三四五六七八九十1234567890]+章 \S+"):
+                 encoding="utf-8", ):
         self.txt_url_path = txt_url_path
-        self.title_pattern = title_pattern
         print("小说网址：", self.txt_url_path)
-        print("标题正则表达式：", self.title_pattern)
         self.voice = voice
         print("语音：", self.voice)
         self.background_music = background_music
@@ -29,21 +26,6 @@ class CreateByUrlFile:
         self.saveAudioPath = saveAudioPath
         self.saveBgmPath = saveBgmPath
         self.saveBookPath = saveBookPath
-
-        self.book_name = os.path.basename(self.txt_url_path).split(".")[0]
-        print("书名：", self.book_name)
-        self.saveAudioPath = os.path.join(self.saveAudioPath, self.book_name)
-        print("音频保存路径：", self.saveAudioPath)
-        self.saveBookPath = os.path.join(self.saveBookPath, self.book_name)
-        print("书籍保存路径：", self.saveBookPath)
-        self.saveBgmPath = os.path.join(self.saveBgmPath, self.book_name)
-        print("背景音乐保存路径：", self.saveBgmPath)
-        if not os.path.exists(self.saveAudioPath):
-            os.makedirs(self.saveAudioPath)
-        if not os.path.exists(self.saveBgmPath):
-            os.makedirs(self.saveBgmPath)
-        if not os.path.exists(self.saveBookPath):
-            os.makedirs(self.saveBookPath)
 
     # 读取整个文件
     async def get_whole_file(self):
@@ -57,14 +39,27 @@ class CreateByUrlFile:
             book_path = os.path.join(self.saveBookPath, book["path"])
             with open(book_path, "r", encoding=self.encoding) as f:
                 content = f.read()
-                chapters.append({book["name"], content})
+                chapters.append([book["name"], content])
         print("读取完成")
         return chapters
 
     # 按照章分割
     async def split_by_chapter(self):
         print("爬取...")
-        books = await  self.get_whole_file()
+        books, title = await  self.get_whole_file()
+        self.book_name = title
+        self.saveAudioPath = os.path.join(self.saveAudioPath, self.book_name)
+        print("音频保存路径：", self.saveAudioPath)
+        self.saveBookPath = os.path.join(self.saveBookPath, self.book_name)
+        print("书籍保存路径：", self.saveBookPath)
+        self.saveBgmPath = os.path.join(self.saveBgmPath, self.book_name)
+        print("背景音乐保存路径：", self.saveBgmPath)
+        if not os.path.exists(self.saveAudioPath):
+            os.makedirs(self.saveAudioPath)
+        if not os.path.exists(self.saveBgmPath):
+            os.makedirs(self.saveBgmPath)
+        if not os.path.exists(self.saveBookPath):
+            os.makedirs(self.saveBookPath)
         print("爬取完成")
         print("读取中...")
         chapters = await self.get_all_file(books)
