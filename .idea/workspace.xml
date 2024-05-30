@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="写转换部分">
-      <change afterPath="$PROJECT_DIR$/back_progress/utils/CreateAudioBookBase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_progress/utils/create__by_txt_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_progress/utils/create__by_txt_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_progress/utils/create__by_url_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_progress/utils/create__by_url_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_progress/utils/split_txt.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_progress/utils/split_txt.py" afterDir="false" />
+    <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="数据库格式">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +280,7 @@
       <updated>1716940802300</updated>
       <workItem from="1716940815541" duration="7890000" />
       <workItem from="1716957959939" duration="13712000" />
-      <workItem from="1717066906271" duration="8716000" />
+      <workItem from="1717066906271" duration="9037000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -598,7 +594,23 @@
       <option name="project" value="LOCAL" />
       <updated>1717074891271</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="写转换部分">
+      <option name="closed" value="true" />
+      <created>1717075633107</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1717075633107</updated>
+    </task>
+    <task id="LOCAL-00041" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717075880496</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1717075880496</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +645,8 @@
     <MESSAGE value="丰富book app" />
     <MESSAGE value="依赖" />
     <MESSAGE value="写转换部分" />
-    <option name="LAST_COMMIT_MESSAGE" value="写转换部分" />
+    <MESSAGE value="数据库格式" />
+    <option name="LAST_COMMIT_MESSAGE" value="数据库格式" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/nas_ss$manage.coverage" NAME="manage Coverage Results" MODIFIED="1716985518393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
