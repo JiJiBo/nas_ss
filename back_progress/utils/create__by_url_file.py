@@ -12,7 +12,9 @@ from utils.utils.TimeUtils import time_to_time_length
 class CreateByUrlFile:
     def __init__(self, txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10,
-                 encoding="utf-8", ):
+                 encoding="utf-8",
+                 engine="qm",
+                 ):
         self.txt_url_path = txt_url_path
         print("小说网址：", self.txt_url_path)
         self.voice = voice
@@ -26,9 +28,19 @@ class CreateByUrlFile:
         self.saveAudioPath = saveAudioPath
         self.saveBgmPath = saveBgmPath
         self.saveBookPath = saveBookPath
+        self.engine = engine
 
     # 读取整个文件
+    # 这里替换为你写的自动获取小说的软件
+    # 返回格式为
+    # books, title
+    # 详解
+    # books  -> {"name": chapter_title, "path": file_path}
+    # title  ->小说名字
     async def get_whole_file(self):
+        if self.engine == "qm":
+            return await pachong(self.txt_url_path, self.saveBookPath)
+
         return await pachong(self.txt_url_path, self.saveBookPath)
         # 读取一个目录下的所有文件
 
