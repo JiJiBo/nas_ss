@@ -29,6 +29,11 @@
 # 如何开始
 
 ## 迁移数据库
+
 ```angular2html
 python manage.py inspectdb>./my_sql_db/models.py
 ```
+
+## 如何创建数据库
+
+- 参见 sql/sql.sql 文件
