@@ -168,18 +168,12 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ############# celery的配置信息######
-# 1 Broker配置，使用Redis作为消息中间件  'redis://127.0.0.1:6379/2'
-BROKER_URL = BROKER_URL
-# 2 BACKEND配置，使用redis  'redis://127.0.0.1:6379/2'
-RESULT_BACKEND = RESULT_BACKEND
-# 3 序列化方案--》json
-ACCEPT_CONTENT = ['json']
-TASK_SERIALIZER = 'json'
-# 结果序列化方案
-RESULT_SERIALIZER = 'json'
+from .celery import *
 
-# 4 任务结果过期时间，秒
-TASK_RESULT_EXPIRES = 60 * 60 * 24
-
-# 5 时区配置
-TIMEZONE = 'Asia/Shanghai'
+# 指定 Broker 使用 Redis，Broker 负责任务的分发和调度
+CELERY_BROKER_URL = CELERY_BROKER_URL
+# 指定结果存储 Backend 使用 Redis，Backend CELERY_RESULT_BACKEND = 'redis://192.168.1.10:26379/1'负责存储任务执行结果
+# django-celery-results 设置
+# CELERY_RESULT_BACKEND = 'django-db'
+os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] = 'true'
+CORS_ALLOW_ALL_ORIGINS = True  # 生产环境中应谨慎使用

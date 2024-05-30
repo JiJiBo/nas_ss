@@ -29,7 +29,7 @@ python manage.py inspectdb>./my_sql_db/models.py
 
 # 如何运行
 ```angular2html
-celery  -A nas_ss flower
-celery -A nas_ss worker -l info
+celery  -A celery_work flower
+celery -A celery_work worker -l info
 python manage.py runserver 0.0.0.0:8000 
 ```
