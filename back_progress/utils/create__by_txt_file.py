@@ -75,6 +75,7 @@ class CreateByTxtFile:
         return data
 
     # 一步方法
+
     async def forward(self):
         chapters = self.split_by_chapter()
 
@@ -83,6 +84,9 @@ class CreateByTxtFile:
         print("开始合成...")
         bookStart = time.time()
         countTime = 0
+        totalChapters = len(chapters)
+        processedChapters = 0
+
         for title, content in chapters.items():
             print(f"正在合成 {title}")
             startTimme = time.time()
@@ -96,9 +100,16 @@ class CreateByTxtFile:
             print(f"{title} 加背景音完成", f"耗时：{time_to_time_length(bgTme)} ")
             allTme = time.time() - startTimme
             countTime += allTme
+            processedChapters += 1
+
+            # 计算进度
+            progress = processedChapters / totalChapters
+            estimatedTotalTime = countTime / progress
+            remainingTime = estimatedTotalTime - countTime
+
             print(f"{title} 完成", f"耗时：{time_to_time_length(allTme)} ", "预计总耗时：",
-                  f"{time_to_time_length(allTme * len(chapters))} ",
-                  f"还得{time_to_time_length(allTme * (len(chapters)) - countTime)}  ")
+                  f"{time_to_time_length(estimatedTotalTime)} ",
+                  f"还得{time_to_time_length(remainingTime)} ")
             print("--------------------------------------")
 
         bookEnd = time.time()
