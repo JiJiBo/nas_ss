@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="数据库格式">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nas_ss/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/nas_ss/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ start_services.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start_services.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +283,7 @@
       <updated>1716940802300</updated>
       <workItem from="1716940815541" duration="7890000" />
       <workItem from="1716957959939" duration="13712000" />
-      <workItem from="1717066906271" duration="11095000" />
+      <workItem from="1717066906271" duration="11949000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -655,7 +653,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717077507914</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717078269532</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1717078269532</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
