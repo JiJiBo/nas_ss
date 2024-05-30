@@ -42,11 +42,11 @@ class TokenMiddleware:
                         request.user = user
                         return self.get_response(request)
                     except:
-                        return getErrorResult({'error': 'Token is expired and cannot be refreshed'}, code=401)
+                        return getErrorResult( 'Token is expired and cannot be refreshed' , code=401)
                 except jwt.InvalidTokenError:
-                    return getErrorResult({'error': 'Invalid token'}, code=401)
+                    return getErrorResult( 'Invalid token' , code=401)
             else:
-                return getErrorResult({'error': 'Token is missing'}, code=401)
+                return getErrorResult(  'Token is missing' , code=401)
 
         response = self.get_response(request)
         return response
