@@ -11,7 +11,7 @@ if [[ "$CONDA_DEFAULT_ENV" != "py310" ]]; then
 fi
 
 # 启动 Django 开发服务器
-nohup python manage.py runserver [::]:18000 > out.log 2>&1 &
+nohup python manage.py runserver [::]:18123 > out.log 2>&1 &
 
 # 启动 Celery Flower
 nohup celery -A nas_ss flower > outflower.log 2>&1 &
