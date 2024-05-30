@@ -4,6 +4,7 @@ from django.conf import settings
 from datetime import datetime, timedelta
 
 from my_sql_db.models import User
+from utils.utils.Result import getErrorResult
 
 
 class TokenMiddleware:
@@ -41,11 +42,11 @@ class TokenMiddleware:
                         request.user = user
                         return self.get_response(request)
                     except:
-                        return JsonResponse({'error': 'Token is expired and cannot be refreshed'}, status=401)
+                        return getErrorResult({'error': 'Token is expired and cannot be refreshed'}, status=401)
                 except jwt.InvalidTokenError:
-                    return JsonResponse({'error': 'Invalid token'}, status=401)
+                    return getErrorResult({'error': 'Invalid token'}, status=401)
             else:
-                return JsonResponse({'error': 'Token is missing'}, status=401)
+                return getErrorResult({'error': 'Token is missing'}, status=401)
 
         response = self.get_response(request)
         return response
