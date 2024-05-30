@@ -14,9 +14,9 @@ fi
 nohup python manage.py runserver [::]:8000 > out.log 2>&1 &
 
 # 启动 Celery Flower
-nohup celery -A sys_bug flower > outflower.log 2>&1 &
+nohup celery -A nas_ss flower > outflower.log 2>&1 &
 
 # 启动 Celery worker
-nohup celery -A sys_bug worker -l info > outworker.log 2>&1 &
+nohup celery -A nas_ss worker -l info > outworker.log 2>&1 &
 
 echo "All services started successfully."
