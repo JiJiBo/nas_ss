@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="数据库格式">
-      <change afterPath="$PROJECT_DIR$/celery_work/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celery_work/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/celery_work/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celery_work/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/celery_work/celery.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nas_ss/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nas_ss/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nas_ss/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/nas_ss/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +81,7 @@
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Nas/PycharmProjects/nas_ss/back_progress/utils",
+    "last_opened_file_path": "C:/Users/Nas/PycharmProjects/nas_ss/nas_ss",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,6 +98,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nas\PycharmProjects\nas_ss\nas_ss" />
       <recent name="C:\Users\Nas\PycharmProjects\nas_ss\back_progress\utils" />
       <recent name="C:\Users\Nas\PycharmProjects\nas_ss\utils\data" />
       <recent name="$PROJECT_DIR$/back_progress" />
@@ -287,7 +285,7 @@
       <updated>1716940802300</updated>
       <workItem from="1716940815541" duration="7890000" />
       <workItem from="1716957959939" duration="13712000" />
-      <workItem from="1717066906271" duration="10467000" />
+      <workItem from="1717066906271" duration="11095000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -649,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717076533884</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717077507914</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1717077507914</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,7 +699,7 @@
     <SUITE FILE_PATH="coverage/nas_ss$pachong.coverage" NAME="pachong Coverage Results" MODIFIED="1717073005048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils/qm" />
     <SUITE FILE_PATH="coverage/nas_ss$python_celery___A_nas_ss_flower.coverage" NAME="python celery  -A nas_ss flower Coverage Results" MODIFIED="1717076715926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_inspectdb___my_sql_db_models_py.coverage" NAME="python manage.py inspectdb&gt;./my_sql_db/models.py Coverage Results" MODIFIED="1717067588305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_runserver_0_0_0_0_8000.coverage" NAME="python manage.py runserver 0.0.0.0:8000 Coverage Results" MODIFIED="1717076719890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_runserver_0_0_0_0_8000.coverage" NAME="python manage.py runserver 0.0.0.0:8000 Coverage Results" MODIFIED="1717077847007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nas_ss$create__by_txt_file.coverage" NAME="create__by_txt_file Coverage Results" MODIFIED="1717075606197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils" />
     <SUITE FILE_PATH="coverage/nas_ss$create__by_url_file.coverage" NAME="create__by_url_file Coverage Results" MODIFIED="1717075495492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils" />
   </component>
