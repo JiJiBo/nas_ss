@@ -16,7 +16,11 @@
 - 后台播放模块
 
 # 如何开始
+## 装包
+```angular2html
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+```
 ## 迁移数据库
 
 ```angular2html
