@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     "back_progress.apps.BackProgressConfig",
     "my_sql_db.apps.MySqlDbConfig",
     "userinfo.apps.UserinfoConfig",
-    "book_info.apps.BookInfoConfig"
+    "book_info.apps.BookInfoConfig",
+    "celery_work.apps.CeleryWorkConfig"
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -166,3 +167,19 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+############# celery的配置信息######
+# 1 Broker配置，使用Redis作为消息中间件  'redis://127.0.0.1:6379/2'
+BROKER_URL = BROKER_URL
+# 2 BACKEND配置，使用redis  'redis://127.0.0.1:6379/2'
+RESULT_BACKEND = RESULT_BACKEND
+# 3 序列化方案--》json
+ACCEPT_CONTENT = ['json']
+TASK_SERIALIZER = 'json'
+# 结果序列化方案
+RESULT_SERIALIZER = 'json'
+
+# 4 任务结果过期时间，秒
+TASK_RESULT_EXPIRES = 60 * 60 * 24
+
+# 5 时区配置
+TIMEZONE = 'Asia/Shanghai'
