@@ -1,3 +1,5 @@
+import os
+
 from pydub import AudioSegment
 
 
@@ -5,6 +7,9 @@ from pydub import AudioSegment
 def add_back(data):
     # 获取 来源的音频路径、背景音乐文件路径、背景音乐音量降低的大小，保存路径
     from_path, to_path, background_music, background_volume_reduction = data
+    if os.path.exists(to_path):
+        print(f"{to_path}文件已存在")
+        return
     original_audio = AudioSegment.from_mp3(from_path)
     background_music = AudioSegment.from_mp3(background_music)
     # 调整背景音乐的音量
