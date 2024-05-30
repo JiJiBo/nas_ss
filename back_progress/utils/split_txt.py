@@ -13,13 +13,13 @@ def split_txt(txt_content, title_pattern=r"第[一二三四五六七八九十123
     parts = re.split(f'({title_pattern})', txt_content)
 
     # 初始化字典
-    novel_dict = {}
+    novel_dict = []
 
     # 遍历分割后的部分，跳过第一个元素，因为它是在第一个标题之前的内容
     for i in range(1, len(parts), 2):
         title = parts[i].strip()
         content = parts[i + 1].strip() if i + 1 < len(parts) else ""
-        novel_dict[title] = content
+        novel_dict .append([title,content])
 
     return novel_dict
 
