@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="数据库格式">
-      <change beforePath="$PROJECT_DIR$/ start_services.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start_services.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,31 +284,7 @@
       <updated>1716940802300</updated>
       <workItem from="1716940815541" duration="7890000" />
       <workItem from="1716957959939" duration="13712000" />
-      <workItem from="1717066906271" duration="11949000" />
-    </task>
-    <task id="LOCAL-00001" summary="init">
-      <option name="closed" value="true" />
-      <created>1716943834235</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1716943834235</updated>
-    </task>
-    <task id="LOCAL-00002" summary="init">
-      <option name="closed" value="true" />
-      <created>1716944000433</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1716944000433</updated>
-    </task>
-    <task id="LOCAL-00003" summary="init">
-      <option name="closed" value="true" />
-      <created>1716944247999</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1716944247999</updated>
+      <workItem from="1717066906271" duration="13968000" />
     </task>
     <task id="LOCAL-00004" summary="init">
       <option name="closed" value="true" />
@@ -661,7 +638,47 @@
       <option name="project" value="LOCAL" />
       <updated>1717078269532</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717078871635</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1717078871635</updated>
+    </task>
+    <task id="LOCAL-00049" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717079016884</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1717079016884</updated>
+    </task>
+    <task id="LOCAL-00050" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717080428193</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1717080428193</updated>
+    </task>
+    <task id="LOCAL-00051" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717080847035</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1717080847035</updated>
+    </task>
+    <task id="LOCAL-00052" summary="数据库格式">
+      <option name="closed" value="true" />
+      <created>1717081048793</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1717081048794</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +722,7 @@
     <SUITE FILE_PATH="coverage/nas_ss$pachong.coverage" NAME="pachong Coverage Results" MODIFIED="1717073005048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils/qm" />
     <SUITE FILE_PATH="coverage/nas_ss$python_celery___A_nas_ss_flower.coverage" NAME="python celery  -A nas_ss flower Coverage Results" MODIFIED="1717076715926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_inspectdb___my_sql_db_models_py.coverage" NAME="python manage.py inspectdb&gt;./my_sql_db/models.py Coverage Results" MODIFIED="1717067588305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_runserver_0_0_0_0_8000.coverage" NAME="python manage.py runserver 0.0.0.0:8000 Coverage Results" MODIFIED="1717077847007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_runserver_0_0_0_0_8000.coverage" NAME="python manage.py runserver 0.0.0.0:8000 Coverage Results" MODIFIED="1717080221929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nas_ss$create__by_txt_file.coverage" NAME="create__by_txt_file Coverage Results" MODIFIED="1717075606197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils" />
     <SUITE FILE_PATH="coverage/nas_ss$create__by_url_file.coverage" NAME="create__by_url_file Coverage Results" MODIFIED="1717075495492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils" />
   </component>
