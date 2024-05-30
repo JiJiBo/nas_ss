@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="依赖">
-      <change afterPath="$PROJECT_DIR$/back_progress/utils/create__by_txt_file.py" afterDir="false" />
+    <list default="true" id="d25fd5b9-b84c-420b-8984-16ab7f69002d" name="Changes" comment="写转换部分">
+      <change afterPath="$PROJECT_DIR$/utils/utils/TimeUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_progress/utils/create__by_txt_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_progress/utils/create__by_txt_file.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +68,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.create__by_txt_file.executor": "Run",
     "Python.manage.executor": "Run",
     "Python.python manage.py inspectdb>./my_sql_db/models.py.executor": "Run",
     "Python.split_txt.executor": "Run",
@@ -74,7 +78,7 @@
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/nas/PycharmProjects/nas_ss/back_progress",
+    "last_opened_file_path": "C:/Users/Nas/PycharmProjects/nas_ss/utils/data",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,13 +95,37 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nas\PycharmProjects\nas_ss\utils\data" />
       <recent name="$PROJECT_DIR$/back_progress" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back_progress/utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.python manage.py inspectdb&gt;./my_sql_db/models.py">
+  <component name="RunManager" selected="Python.create__by_txt_file">
+    <configuration name="create__by_txt_file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="nas_ss" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/back_progress/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/back_progress/utils/create__by_txt_file.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="nas_ss" />
       <option name="ENV_FILES" value="" />
@@ -193,12 +221,14 @@
     </configuration>
     <list>
       <item itemvalue="Django Server.nas_ss" />
+      <item itemvalue="Python.create__by_txt_file" />
       <item itemvalue="Python.python manage.py inspectdb&gt;./my_sql_db/models.py" />
       <item itemvalue="Python.manage" />
       <item itemvalue="Python.split_txt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.create__by_txt_file" />
         <item itemvalue="Python.python manage.py inspectdb&gt;./my_sql_db/models.py" />
         <item itemvalue="Python.manage" />
         <item itemvalue="Python.split_txt" />
@@ -223,7 +253,7 @@
       <updated>1716940802300</updated>
       <workItem from="1716940815541" duration="7890000" />
       <workItem from="1716957959939" duration="13712000" />
-      <workItem from="1717066906271" duration="2058000" />
+      <workItem from="1717066906271" duration="4374000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -473,7 +503,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717067821901</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="写转换部分">
+      <option name="closed" value="true" />
+      <created>1717069137681</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1717069137681</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,11 +545,13 @@
     <MESSAGE value="加入token机制,加入book app" />
     <MESSAGE value="丰富book app" />
     <MESSAGE value="依赖" />
-    <option name="LAST_COMMIT_MESSAGE" value="依赖" />
+    <MESSAGE value="写转换部分" />
+    <option name="LAST_COMMIT_MESSAGE" value="写转换部分" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/nas_ss$manage.coverage" NAME="manage Coverage Results" MODIFIED="1716985518393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nas_ss$split_txt.coverage" NAME="split_txt Coverage Results" MODIFIED="1716945973326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress" />
     <SUITE FILE_PATH="coverage/nas_ss$python_manage_py_inspectdb___my_sql_db_models_py.coverage" NAME="python manage.py inspectdb&gt;./my_sql_db/models.py Coverage Results" MODIFIED="1717067588305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nas_ss$create__by_txt_file.coverage" NAME="create__by_txt_file Coverage Results" MODIFIED="1717071274873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/back_progress/utils" />
   </component>
 </project>
