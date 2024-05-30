@@ -25,3 +25,10 @@
 ## 用户模块
 
 - 加入token机制
+
+# 如何开始
+
+## 迁移数据库
+```angular2html
+python manage.py inspectdb>./my_sql_db/models.py
+```
