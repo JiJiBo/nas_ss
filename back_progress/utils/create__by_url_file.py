@@ -18,8 +18,8 @@ class CreateByUrlFile(CreateAudioBookBase):
 
     async def get_whole_file(self):
         if self.engine == "qm":
-            return await pachong(self, self.txt_url_path, self.saveBookPath)
-        return await pachong(self, self.txt_url_path, self.saveBookPath)
+            return await pachong(self.txt_url_path, self.saveBookPath)
+        return await pachong(self.txt_url_path, self.saveBookPath)
 
     async def split_by_chapter(self):
         print("爬取...")
