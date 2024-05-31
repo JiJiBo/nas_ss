@@ -48,6 +48,7 @@
 - 后台是两个服务，一个是做计算，用的django，一个做存储，中间用ftp做传输。
 - 你的硬盘够用的话，可以使用一个服务器，但是需要自己修改一些东西。不要用ftp做传输
 - 自行上传bgm文件，加在数据库里
+- 自行在  [settings.py](nas_ss%2Fsettings.py)  设置 数据库配置 DATABASES
 
 ```angular2html
 CreateAudioBookBase 的 is_to_ftp字段置为false（没有测试）
