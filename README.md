@@ -32,6 +32,12 @@
 
 <img src="img/back.png" width="50%" alt="后台页面">
 
+## 音色
+
+- 用的edge-tts 这里不全可以自己加
+
+<img src="img/img.png" width="50%" alt="后台页面">
+
 ## iOS播放
 
 <img src="img/ios.jpg" width="40%" alt="iOS播放">
@@ -41,6 +47,7 @@
 - 这只是后台服务，前端请参考 https://github.com/JiJiBo/nas_ss_app.git
 - 后台是两个服务，一个是做计算，用的django，一个做存储，中间用ftp做传输。
 - 你的硬盘够用的话，可以使用一个服务器，但是需要自己修改一些东西。不要用ftp做传输
+- 自己上传bgm文件，加在数据库里
 
 ```angular2html
 CreateAudioBookBase 的 is_to_ftp字段置为false（没有测试）
