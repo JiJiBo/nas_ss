@@ -65,7 +65,7 @@ class CreateAudioBookBase:
             return
         if not os.path.exists(self.saveAudioPath):
             os.makedirs(self.saveAudioPath)
-        savePath = os.path.join(self.saveAudioPath, f"{title}.mp3")
+        savePath = os.path.join(self.saveAudioPath, f"nas_time{title}.mp3")
         data = content, savePath, self.voice
         await text2audio(data)
         self.merge_audio(savePath)
@@ -114,7 +114,7 @@ class CreateAudioBookBase:
             return
         if not os.path.exists(self.saveBgmPath):
             os.makedirs(self.saveBgmPath)
-        to_path = os.path.join(self.saveBgmPath, f"{title}.mp3")
+        to_path = os.path.join(self.saveBgmPath, f"nas_time{title}.mp3")
         data = from_path, to_path, background_music, background_volume_reduction
         add_back(data)
         self.merge_audio(to_path)
