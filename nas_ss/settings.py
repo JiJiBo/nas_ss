@@ -180,3 +180,5 @@ CELERY_BROKER_URL = CELERY_BROKER_URL
 # CELERY_RESULT_BACKEND = 'django-db'
 os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] = 'true'
 CORS_ALLOW_ALL_ORIGINS = True  # 生产环境中应谨慎使用
+# 媒体文件夹路径
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
