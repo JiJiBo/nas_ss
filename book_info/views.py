@@ -389,7 +389,9 @@ def delete_novel(request):
                     else:
                         os.path.exists(book.path) and os.remove(book.path)
                     book.delete()
+            del_all_files(novel.type, novel.name)
             novel.delete()
+
         except Exception as e:
             print(e)
             return getErrorResult(str(e))
@@ -422,10 +424,11 @@ def clear_novel(request):
                     else:
                         os.path.exists(book.path) and os.remove(book.path)
                     book.delete()
+            del_all_files(novel.type, novel.name)
             novel.add_back_progress = 0
             novel.download_progress = 0
             novel.conversion_progress = 0
-            novel.save()
+            novel.save(novel.type)
         except Exception as e:
             print(e)
             return getErrorResult(str(e))
@@ -433,3 +436,29 @@ def clear_novel(request):
         return getOkResult("小说清除成功")
     else:
         return getErrorResult("不支持的请求方法")
+
+
+def del_all_files(type, name):
+    root = "./data"
+    saveBookPath = os.path.join(root, "txt")
+    saveAudioPath = os.path.join(root, "audio")
+    saveBgmPath = os.path.join(root, "bgm")
+    saveBookPath = os.path.join(saveBookPath, name)
+    saveAudioPath = os.path.join(saveAudioPath, name)
+    saveBgmPath = os.path.join(saveBgmPath, name)
+    if type == "link":
+        for root, dirs, files in os.walk(saveBookPath):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+    elif type == "path":
+        os.remove(saveBookPath)
+    for root, dirs, files in os.walk(saveAudioPath):
+        for file in files:
+            file_path = os.path.join(root, file)
+            os.remove(file_path)
+    for root, dirs, files in os.walk(saveBgmPath):
+        for file in files:
+            file_path = os.path.join(root, file)
+            os.remove(file_path)
+    print("删除文件夹中的所有文件")
