@@ -156,9 +156,8 @@ class FTPClient:
         except Exception as e:
             print(f"An error occurred while creating folder {folder_path}: {e}")
 
-    def delete_file(self, file_path, directory):
+    def delete_file(self, file_path ):
         try:
-            self.check_file_exists(file_path, directory)
             self.ftp.delete(os.path.join(self.directory, file_path))
             print(f"File {file_path} deleted.")
         except Exception as e:

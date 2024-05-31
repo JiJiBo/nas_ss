@@ -385,7 +385,7 @@ def delete_novel(request):
                 ftp_client.connect()
                 for book in books:
                     if book.get_step != 1:
-                        ftp_client.delete_file(book.path, book.dir)
+                        ftp_client.delete_file(book.path )
                     else:
                         os.path.exists(book.path) and os.remove(book.path)
                     book.delete()
@@ -420,7 +420,7 @@ def clear_novel(request):
                 for book in books:
                     print(book.path)
                     if book.get_step != 1:
-                        ftp_client.delete_file(book.path, book.dir)
+                        ftp_client.delete_file(book.path )
                     else:
                         os.path.exists(book.path) and os.remove(book.path)
                     book.delete()

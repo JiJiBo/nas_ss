@@ -1,10 +1,12 @@
 import datetime
+import os.path
 
 import pytz
 from asgiref.sync import sync_to_async
 from django.db import connection, transaction
 from django.core.cache import cache
 
+from back_progress.utils.ftp_client import get_def_ftp_client
 from my_sql_db.models import Books, SmallSay
 
 
@@ -27,8 +29,19 @@ def haveThisBookTitle(data):
         titles = Books.objects.filter(book_id=small_say.id, name=name, get_step=get_step)
 
     # 打印调试信息
-
-    # 返回查询结果
+    if len(titles) > 1:
+        print("haveThisBookTitle", "error", "len(titles) > 1")
+        for title in titles:
+            local_path = os.path.join(title.dir, f"{title.name}.mp3")
+            ftp_path = title.path
+            os.remove(local_path)
+            client = get_def_ftp_client()
+            client.connect()
+            client.delete_file(ftp_path)
+            client.disconnect()
+            title.delete()
+        return False
+        # 返回查询结果
     return len(titles) > 0
 
 
@@ -78,9 +91,6 @@ def saveBookMsg(data):
 @sync_to_async
 def get_small_say(id):
     return SmallSay.objects.get(id=id)
-
-
-
 
 
 def haveThisBookLink(link):
