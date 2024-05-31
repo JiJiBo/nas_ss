@@ -129,6 +129,7 @@ class CreateAudioBookBase:
         bookStart = time.time()
         countTime = 0
         totalChapters = len(chapters)
+        await self.saveMaxProgress(totalChapters)
         processedChapters = 0
         page = 0
         for title, content in chapters:
@@ -160,3 +161,9 @@ class CreateAudioBookBase:
         if self.is_to_ftp:
             self.del_all_files()
         print(f"{self.book_name} 合成完成", f"耗时：{time_to_time_length(bookEnd - bookStart)} ")
+    @sync_to_async
+    def saveMaxProgress(self, chapters):
+        self.small_say.download_max = chapters
+        self.small_say.add_back_max = chapters
+        self.small_say.conversion_max = chapters
+        self.small_say.save()

@@ -30,17 +30,12 @@ class CreateByTxtFile(CreateAudioBookBase):
         print("分割中...")
         chapters = split_txt(txt_content, self.title_pattern)
         print("分割完成")
-        await self.saveMaxProgress(chapters)
+
         print(self.book_name, "分割结果如下：", len(chapters), "章")
         print("--------------------------------------")
         return chapters
 
-    @sync_to_async
-    def saveMaxProgress(self, chapters):
-        self.small_say.download_max = len(chapters)
-        self.small_say.add_back_max = len(chapters)
-        self.small_say.conversion_max = len(chapters)
-        self.small_say.save()
+
 
 
 async def main():
