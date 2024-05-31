@@ -1,19 +1,8 @@
-# 后台模块
+# 介绍
 
-- 数据库模块
-- 页面模块
-- 后台任务模块
-- 爬虫模块
-- 用户模块
+## 项目介绍
 
-# 前端模块
-
-- 登录页面
-- 配置页面
-- 小说列表
-- 小说详情
-- 播放列表
-- 后台播放模块
+- 基于python、diango的小说转语音 并且加背景音的服务
 
 # 如何开始
 
@@ -21,12 +10,6 @@
 
 ```angular2html
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-
-# 导出依赖
-
-```
-pip freeze > requirements.txt
 ```
 
 ## 迁移数据库
@@ -41,10 +24,30 @@ python manage.py inspectdb>./my_sql_db/models.py
 
 # 如何运行
 
+- windows
+
 ```angular2html
 celery  -A nas_ss flower
 celery -A nas_ss worker -l info
 python manage.py runserver 0.0.0.0:8000 
 ```
 
+- linux
 
+1. 重启
+
+```angular2html
+./restart_services.sh
+```
+
+2. 开启
+
+```angular2html
+./start_services.sh
+```
+
+3. 关闭
+
+```angular2html
+./stop_services.sh
+```

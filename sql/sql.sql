@@ -31,7 +31,6 @@ CREATE TABLE `bgm` (
 
 /*Data for the table `bgm` */
 
-insert  into `bgm`(`id`,`bgm`,`path`,`time`) values (1,'东京漂移','get_small_say/back/djpy.mp3','2024-05-12 06:03:04'),(2,'风之谷','get_small_say/back/fzg.mp3','2024-05-18 13:59:54'),(3,'撒哈拉','get_small_say/back/sahara.mp3','2024-05-22 10:29:20');
 
 /*Table structure for table `books` */
 
@@ -49,7 +48,7 @@ CREATE TABLE `books` (
   `man_uuid` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `page` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89867 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90732 DEFAULT CHARSET=latin1;
 
 /*Data for the table `books` */
 
@@ -79,11 +78,12 @@ CREATE TABLE `small_say` (
   `background_music_id` int DEFAULT NULL,
   `voice_id` int DEFAULT NULL,
   `userid` int DEFAULT NULL,
+  `path` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `type` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 /*Data for the table `small_say` */
-
 
 
 /*Table structure for table `user` */
@@ -100,7 +100,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `user` */
-
 
 
 /*Table structure for table `voice` */
