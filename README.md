@@ -93,6 +93,8 @@ python manage.py runserver 0.0.0.0:8000
 
 3. 关闭
 
+< 需要安装 killall
+
 ```angular2html
 ./stop_services.sh
 ```
