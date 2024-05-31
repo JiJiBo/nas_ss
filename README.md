@@ -44,7 +44,7 @@
 
 # 注意
 
-- 这只是后台服务，前端请参考 https://github.com/JiJiBo/nas_ss_app.git
+- 这只是后台服务，前端请参考 flutter实现的 https://github.com/JiJiBo/nas_ss_app.git
 - 后台是两个服务，一个是做计算，用的django，一个做存储，中间用ftp做传输。
 - 你的硬盘够用的话，可以使用一个服务器，但是需要自己修改一些东西。不要用ftp做传输
 - 自行上传bgm文件，加在数据库里
