@@ -1,23 +1,10 @@
 import json
-import uuid
 
-import jwt
-from django.contrib.auth.models import AbstractUser
-from django.core.cache.backends import redis
-from django.http import JsonResponse
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from my_sql_db.models import User
 from nas_ss import settings
 from utils.utils.Result import getErrorResult, getOkResult
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics
-from django.contrib.auth import get_user_model
 
 
 @csrf_exempt
