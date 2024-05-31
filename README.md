@@ -12,22 +12,22 @@
 # 项目页面
 
 ## 选取文件
-<img src="img/img%20%281%29.jpg" width="50%" alt="选取文件">
+<img src="img/img%20%281%29.jpg" width="30%" alt="选取文件">
 
 ## 首页
-<img src="img/img%20%282%29.jpg" width="50%" alt="首页">
+<img src="img/img%20%282%29.jpg" width="30%" alt="首页">
 
 ## 详情页
-<img src="img/img%20%283%29.jpg" width="50%" alt="详情页">
+<img src="img/img%20%283%29.jpg" width="30%" alt="详情页">
 
 ## 更新
-<img src="img/img%20%284%29.jpg" width="50%" alt="更新">
+<img src="img/img%20%284%29.jpg" width="30%" alt="更新">
 
 ## 后台页面
 <img src="img/back.png" width="50%" alt="后台页面">
 
 ## iOS播放
-<img src="img/ios.jpg" width="50%" alt="iOS播放">
+<img src="img/ios.jpg" width="40%" alt="iOS播放">
 
 # 注意
 
