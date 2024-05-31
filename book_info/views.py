@@ -304,7 +304,8 @@ def add_novel_by_txt(request):
         novel_file = request.FILES.get('novel_file')
         file_path = None
         if novel_file:
-            file_path = default_storage.save(novel_file.name, novel_file)
+            save_path = 'txt/' + novel_file.name
+            file_path = default_storage.save(save_path, novel_file)
 
         if not haveThisBookLinkByPath(file_path):
             if name and file_path:
