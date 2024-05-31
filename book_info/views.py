@@ -451,8 +451,6 @@ def del_all_files(type, name):
             for file in files:
                 file_path = os.path.join(root, file)
                 os.remove(file_path)
-    elif type == "path":
-        os.remove(saveBookPath)
     for root, dirs, files in os.walk(saveAudioPath):
         for file in files:
             file_path = os.path.join(root, file)
