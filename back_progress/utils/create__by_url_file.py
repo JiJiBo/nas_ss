@@ -12,12 +12,13 @@ class CreateByUrlFile(CreateAudioBookBase):
         super().__init__(book_id, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                          background_volume_reduction, encoding)
         self.txt_url_path = txt_url_path
+        print("下载地址：", txt_url_path)
         self.engine = engine
 
     async def get_whole_file(self):
         if self.engine == "qm":
-            return await pachong(self,self.txt_url_path, self.saveBookPath)
-        return await pachong(self,self.txt_url_path, self.saveBookPath)
+            return await pachong(self, self.txt_url_path, self.saveBookPath)
+        return await pachong(self, self.txt_url_path, self.saveBookPath)
 
     async def split_by_chapter(self):
         print("爬取...")
@@ -50,7 +51,7 @@ async def main():
     saveAudioPath = os.path.join(root, "audio")
     saveBgmPath = os.path.join(root, "bgm")
     voice = "zh-CN-YunxiNeural"
-    creater = CreateByUrlFile(1,txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
+    creater = CreateByUrlFile(1, txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                               encoding="utf-8")
     await creater.forward()
 
