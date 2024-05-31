@@ -109,7 +109,7 @@ class CreateAudioBookBase:
         return SmallSay.objects.get(id=self.book_id)
 
     async def add_bg_music(self, from_path, title, background_music, background_volume_reduction, page):
-        if self.is_had_ftp(title, 5):
+        if await self.is_had_ftp(title, 5):
             print("该章节已经加了背景音")
             return
         if not os.path.exists(self.saveBgmPath):
