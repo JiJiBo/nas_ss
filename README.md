@@ -84,8 +84,8 @@ python manage.py runserver 0.0.0.0:8000
 
 2. 开启接口服务器
 
-< 里面会默认开启一个 pyss310 的 conda 环境
-<可以修改为自己的虚拟环境
+- 里面会默认开启一个 pyss310 的 conda 环境
+- 可以修改为自己的虚拟环境
 
 ```angular2html
 ./start_services.sh
@@ -93,7 +93,7 @@ python manage.py runserver 0.0.0.0:8000
 
 3. 关闭
 
-< 需要安装 killall
+- 需要安装 killall
 
 ```angular2html
 ./stop_services.sh
