@@ -7,7 +7,7 @@ from asgiref.sync import sync_to_async
 from back_progress.utils.add_back import add_back
 from back_progress.utils.ftp_client import get_def_ftp_client
 from back_progress.utils.txt2voice import text2audio
-from my_sql_db.models import SmallSay
+from my_sql_db.models import SmallSay, Books
 from my_sql_db.utils.utils import haveThisBookTitle, saveBookMsg
 from utils.utils.TimeUtils import time_to_time_length
 
@@ -74,6 +74,7 @@ class CreateAudioBookBase:
                 print("文件已损坏，重新转换")
         if os.path.exists(savePath):
             print("文件已存在，删除重新转换")
+            await  self.delect_a_conver_history(title, page)
             os.remove(savePath)
         data = content, savePath, self.voice
         await text2audio(data)
@@ -111,6 +112,16 @@ class CreateAudioBookBase:
         print("保存语音转换进度", name)
         return await self.save_chapter_history(path, 2, name, page, self.saveAudioPath)
 
+    async def delect_a_bgm_history(self, name, page):
+        await  self.delect_a_history(name, page, 5)
+
+    async def delect_a_conver_history(self, name, page):
+        await self.delect_a_history(name, page, 2)
+
+    @sync_to_async
+    def delect_a_history(self, name, page, get_step):
+        Books.objects.filter(book_id=self.book_id, get_step=get_step, name=name, page=page).delete()
+
     # 保存下载进度
     async def save_download_history(self, name, page, path):
         print("保存下载进度", name)
@@ -133,6 +144,8 @@ class CreateAudioBookBase:
             print("该章节已经加了背景音")
             return None
         if os.path.exists(to_path):
+            print("文件已存在，删除重新转换")
+            await self.delect_a_bgm_history(title, page)
             os.remove(to_path)
         data = from_path, to_path, background_music, background_volume_reduction
         add_back(data)
