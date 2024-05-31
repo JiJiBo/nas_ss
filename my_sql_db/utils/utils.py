@@ -76,3 +76,9 @@ def saveBookMsg(data):
 @sync_to_async
 def get_small_say(id):
     return SmallSay.objects.get(id=id)
+def haveThisBookLink(link):
+    books = SmallSay.objects.filter(link=link)
+    return len(books) > 0
+def haveThisBookLinkByPath(path):
+    books = SmallSay.objects.filter(path=path)
+    return len(books) > 0

@@ -1,7 +1,13 @@
+import datetime
+import json
+
+from django.core.files.storage import default_storage
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.decorators.csrf import csrf_exempt
 
+from celery_work.tasks import download_novel_in_thread
 from my_sql_db.models import SmallSay, Bgm, Voice, Books
+from my_sql_db.utils.utils import haveThisBookLink, haveThisBookLinkByPath
 from utils.utils.Result import *
 from utils.utils.TokenUtils import get_user_id
 
@@ -225,3 +231,114 @@ def get_novel(request):
             return getErrorResult(e)
     else:
         return getErrorResult('no support method')
+
+
+def add_novel(request):
+    print("add_novel")
+    """添加小说"""
+    print(request.method)
+    if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        name = data.get('name')
+        link = data.get('link')
+        voice_id = data.get('voice_id')
+        voice = data.get('voice')
+        user_id = data.get('user_id')
+        background_music = data.get('background_music')
+        background_music_id = data.get('background_music_id')
+        print(name, link, voice, background_music)
+        print(name, link, voice_id, background_music_id)
+        if not haveThisBookLink(link):
+            if name and link:
+                novel = SmallSay.objects.create(
+                    name=name,
+                    link=link,
+                    type="link",
+                    background_music=background_music,
+                    background_music_id=background_music_id,
+                    voice_id=voice_id,
+                    last_updated=datetime.datetime.now(),
+                    download_progress=0,
+                    conversion_progress=0,
+                    conversion_max=0,
+                    download_max=0,
+                    add_back_progress=0,
+                    add_back_max=0,
+                    userid=user_id,
+                    voice=voice,
+                    time=datetime.datetime.now(),
+                )
+            else:
+                return getErrorResult('名称和链接为必填项')
+        else:
+            novel = SmallSay.objects.filter(link=link).first()
+        print("在子线程中执行下载小说的函数")
+        # 在子线程中执行下载小说的函数
+        if novel is None:
+            return getErrorResult("没有这个小说")
+        task_id = download_novel_in_thread.delay(novel.id)
+        novel.data = str(task_id)
+        novel.save()
+        return getOkResult("小说添加成功")
+
+    else:
+        return getErrorResult("不支持的请求方法")
+
+
+def add_novel_by_txt(request):
+    print("add_novel_by_txt")
+    """添加小说，并接收一个txt文件"""
+    print(request.method)
+    if request.method == 'POST':
+        # 解析JSON数据
+        data = json.loads(request.POST.get('data'))
+        name = data.get('name')
+        voice_id = data.get('voice_id')
+        voice = data.get('voice')
+        user_id = data.get('user_id')
+        background_music = data.get('background_music')
+        background_music_id = data.get('background_music_id')
+
+        # 处理文件上传
+        novel_file = request.FILES.get('novel_file')
+        file_path = None
+        if novel_file:
+            file_path = default_storage.save(novel_file.name, novel_file)
+
+        if not haveThisBookLinkByPath(file_path):
+            if name and file_path:
+                novel = SmallSay.objects.create(
+                    name=name,
+                    path=file_path,
+                    type="path",
+                    background_music=background_music,
+                    background_music_id=background_music_id,
+                    voice_id=voice_id,
+                    last_updated=datetime.datetime.now(),
+                    download_progress=0,
+                    conversion_progress=0,
+                    conversion_max=0,
+                    download_max=0,
+                    add_back_progress=0,
+                    add_back_max=0,
+                    userid=user_id,
+                    voice=voice,
+                    time=datetime.datetime.now(),
+                    txt_path=file_path  # 保存文件路径
+                )
+            else:
+                return getErrorResult("名称和链接为必填项")
+        else:
+            novel = SmallSay.objects.filter(path=file_path).first()
+
+        print("在子线程中执行下载小说的函数")
+        # 在子线程中执行下载小说的函数
+        if novel is None:
+            return getErrorResult("没有这个小说")
+        task_id = download_novel_in_thread.delay(novel.id)
+        novel.data = str(task_id)
+        novel.save()
+        return getOkResult("小说添加成功")
+
+    else:
+        return getErrorResult("不支持的请求方法")
