@@ -70,7 +70,7 @@ class FTPClient:
             with open(local_file, 'rb') as file:
                 remote_file = remote_file.replace("\\", "/")
                 self.ftp.storbinary(f'STOR {os.path.join(directory, remote_file)}', file)
-            print(f"Uploaded {local_file} to {remote_file}")
+            print(f"Uploaded {local_file} to {os.path.join(timeStr, remote_file)}")
             return os.path.join(timeStr, remote_file)
         except Exception as e:
             print(f"An error occurred during upload: {e}")
