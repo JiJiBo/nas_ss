@@ -30,4 +30,10 @@ urlpatterns = [
     path("get_filtered_books", get_filtered_books, name="get_filtered_books"),
     path("get_a_voice", get_a_voice, name="get_a_voice"),
     path("get_a_bgm", get_a_bgm, name="get_a_bgm"),
+    path("get_novel", get_novel, name="get_novel"),
+    path("add_novel", add_novel, name="add_novel"),
+    path("add_novel_by_txt", add_novel_by_txt, name="add_novel_by_txt"),
+    path("update_novel", update_novel, name="update_novel"),
+    path("delete_novel", delete_novel, name="delete_novel"),
+    path("clear_novel", clear_novel, name="clear_novel"),
 ]
