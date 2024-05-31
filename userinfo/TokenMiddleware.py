@@ -16,7 +16,7 @@ class TokenMiddleware:
         print(request.path)
         print(request.method)
         if not any(request.path.startswith(func) for func in EXCLUDED_FUNCTIONS):
-            print(request.headers)
+            print(request.headers.get('Authorization'))
             token = request.headers.get('Authorization')
             if token:
                 try:
