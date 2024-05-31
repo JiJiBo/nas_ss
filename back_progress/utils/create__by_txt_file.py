@@ -9,7 +9,7 @@ from back_progress.utils.split_txt import split_txt
 class CreateByTxtFile(CreateAudioBookBase):
     def __init__(self, book_id, txt_file_path, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10, encoding="utf-8",
-                 title_pattern = r"第[一二三四五六七八九十百千万零0123456789]+[章节回]\S*"):
+                 title_pattern = r"(\n\s*第\s*[\d一二三四五六七八九十百千万]+\s*章.*)"):
         super().__init__(book_id, None, saveAudioPath, saveBgmPath, voice, background_music,
                          background_volume_reduction, encoding)
         self.txt_file_path = txt_file_path
