@@ -5,7 +5,7 @@ from asgiref.sync import sync_to_async
 from django.db import connection, transaction
 from django.core.cache import cache
 
-from my_sql_db.models import Books
+from my_sql_db.models import Books, SmallSay
 
 
 @sync_to_async
@@ -73,3 +73,6 @@ def saveBookMsg(data):
         print(name, "add_back_progress", "+1")
         small_say.add_back_progress += 1
         small_say.save()
+@sync_to_async
+def get_small_say(id):
+    return SmallSay.objects.get(id=id)

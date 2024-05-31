@@ -154,6 +154,8 @@ class SmallSay(models.Model):
     download_progress = models.IntegerField(blank=True, null=True)
     conversion_progress = models.IntegerField(blank=True, null=True)
     data = models.TextField(db_collation='utf8mb4_unicode_ci', blank=True, null=True)
+    type = models.TextField(db_collation='utf8mb4_unicode_ci', blank=True, null=True)
+    path = models.TextField(db_collation='utf8mb4_unicode_ci', blank=True, null=True)
     data2 = models.IntegerField(blank=True, null=True)
     data3 = models.FloatField(blank=True, null=True)
     conversion_max = models.IntegerField(blank=True, null=True)
