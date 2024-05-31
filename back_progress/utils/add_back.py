@@ -12,8 +12,8 @@ def add_back(data):
         return
     print("from_path",from_path)
     print("to_path",to_path)
-    original_audio = AudioSegment.from_mp3(from_path)
-    background_music = AudioSegment.from_mp3(background_music)
+    original_audio = AudioSegment.from_mp3(from_path.trim())
+    background_music = AudioSegment.from_mp3(background_music.trim())
     # 调整背景音乐的音量
     reduced_background_music = background_music - background_volume_reduction
 
