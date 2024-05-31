@@ -31,7 +31,7 @@ def login(request):
             'alg': 'HS256'
         }
         # 构造payload
-        expiration_time = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)  # 设置有效时间为30分钟
+        expiration_time = datetime.datetime.utcnow() + datetime.timedelta(days=1)  # 设置有效时间为1天
         payload = {
             'user_id': user.id,  # 自定义用户ID
             'username': user.name,  # 自定义用户名
