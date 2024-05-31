@@ -68,8 +68,13 @@ class CreateAudioBookBase:
         savePath = os.path.join(self.saveAudioPath, f"{title}.mp3")
         if await self.is_had_ftp(title, 2) or await self.is_had_ftp(title, 5):
             print("已经转换过该章节")
-            return savePath,title
-
+            if self.check_file(savePath):
+                return savePath, title
+            else:
+                print("文件已损坏，重新转换")
+        if os.path.exists(savePath):
+            print("文件已存在，删除重新转换")
+            os.remove(savePath)
         data = content, savePath, self.voice
         await text2audio(data)
         remote_file = self.merge_audio(savePath)
@@ -121,18 +126,30 @@ class CreateAudioBookBase:
         return SmallSay.objects.get(id=self.book_id)
 
     async def add_bg_music(self, from_path, title, background_music, background_volume_reduction, page):
-        if await self.is_had_ftp(title, 5):
-            print("该章节已经加了背景音")
-            return None
         if not os.path.exists(self.saveBgmPath):
             os.makedirs(self.saveBgmPath)
         to_path = os.path.join(self.saveBgmPath, f"{title}.mp3")
+        if await self.is_had_ftp(title, 5) and self.check_file(to_path):
+            print("该章节已经加了背景音")
+            return None
+        if os.path.exists(to_path):
+            os.remove(to_path)
         data = from_path, to_path, background_music, background_volume_reduction
         add_back(data)
         remote_file = self.merge_audio(to_path)
         if remote_file:
             await self.save_bgm_history(title, page, remote_file)
         return data
+
+    # 检查文件完整性
+    def check_file(self, filepath):
+        if not os.path.exists(filepath):
+            print(f"文件 {filepath} 不存在")
+            return False
+        if os.path.getsize(filepath) == 0:
+            print(f"文件 {filepath} 为空")
+            return False
+        return True
 
     async def forward(self):
         self.small_say = await self.get_small_say()
