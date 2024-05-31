@@ -133,8 +133,12 @@ class CreateAudioBookBase:
         processedChapters = 0
         page = 0
         for title, content in chapters:
+
+            if len(content) == 0:
+                print(f"跳过 {title}，没有内容")
+                continue
             page += 1
-            print(f"正在合成 {title}","总字数",len(content))
+            print(f"正在合成 {title}", "总字数", len(content))
             startTimme = time.time()
             savePath, title = await self.read_one_chapter(title, content, page)
             readTme = time.time() - startTimme
@@ -161,6 +165,7 @@ class CreateAudioBookBase:
         if self.is_to_ftp:
             self.del_all_files()
         print(f"{self.book_name} 合成完成", f"耗时：{time_to_time_length(bookEnd - bookStart)} ")
+
     @sync_to_async
     def saveMaxProgress(self, chapters):
         self.small_say.download_max = chapters
