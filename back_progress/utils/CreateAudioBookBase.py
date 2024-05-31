@@ -6,7 +6,6 @@ from back_progress.utils.txt2voice import text2audio
 from utils.utils.TimeUtils import time_to_time_length
 
 
-
 class CreateAudioBookBase:
     def __init__(self, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10, encoding="utf-8"):
@@ -18,6 +17,22 @@ class CreateAudioBookBase:
         self.saveBgmPath = saveBgmPath
         self.saveBookPath = saveBookPath
         self.book_name = None  # 初始化 book_name 属性
+
+    def del_all_files(self):
+
+        for root, dirs, files in os.walk(self.saveBookPath):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+        for root, dirs, files in os.walk(self.saveAudioPath):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+        for root, dirs, files in os.walk(self.saveBgmPath):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+        print("删除文件夹中的所有文件")
 
     async def get_whole_file(self):
         raise NotImplementedError("This method should be overridden in subclasses")
@@ -82,4 +97,5 @@ class CreateAudioBookBase:
             print("--------------------------------------")
 
         bookEnd = time.time()
+        self.del_all_files()
         print(f"{self.book_name} 合成完成", f"耗时：{time_to_time_length(bookEnd - bookStart)} ")
