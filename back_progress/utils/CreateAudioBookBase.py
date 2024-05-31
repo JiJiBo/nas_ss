@@ -60,7 +60,7 @@ class CreateAudioBookBase:
         raise NotImplementedError("This method should be overridden in subclasses")
 
     async def read_one_chapter(self, title, content, page):
-        if self.is_had_ftp(title, 2) or self.is_had_ftp(title, 5):
+        if await self.is_had_ftp(title, 2) or await self.is_had_ftp(title, 5):
             print("已经转换过该章节")
             return
         savePath = os.path.join(self.saveAudioPath, f"{title}.mp3")
