@@ -202,8 +202,8 @@ def get_novel(request):
             novel_id = request.GET.get('novel_id')
             novel = SmallSay.objects.get(id=novel_id)
             download_progress = len(Books.objects.filter(book_id=novel.id, get_step=1))
-            conversion_progress = len(Books.objects.filter(book_id=novel.id, get_step=3))
-            add_back_progress = len(Books.objects.filter(book_id=novel.id, get_step=6))
+            conversion_progress = len(Books.objects.filter(book_id=novel.id, get_step=2))
+            add_back_progress = len(Books.objects.filter(book_id=novel.id, get_step=5))
             conversion_fail = len(Books.objects.filter(book_id=novel.id, get_step=4))
             add_back_fail = len(Books.objects.filter(book_id=novel.id, get_step=7))
             novel_data = {
