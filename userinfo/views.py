@@ -1,5 +1,6 @@
 import json
 
+import jwt
 from django.views.decorators.csrf import csrf_exempt
 
 from my_sql_db.models import User

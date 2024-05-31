@@ -245,7 +245,6 @@ def add_novel(request):
         link = data.get('link')
         voice_id = data.get('voice_id')
         voice = data.get('voice')
-        user_id = data.get('user_id')
         background_music = data.get('background_music')
         background_music_id = data.get('background_music_id')
         print(name, link, voice, background_music)
@@ -266,7 +265,7 @@ def add_novel(request):
                     download_max=0,
                     add_back_progress=0,
                     add_back_max=0,
-                    userid=user_id,
+                    userid=get_user_id(request),
                     voice=voice,
                     time=datetime.datetime.now(),
                 )
@@ -293,13 +292,11 @@ def add_novel_by_txt(request):
     print(request.method)
     if request.method == 'POST':
         # 解析JSON数据
-        data = json.loads(request.body.decode('utf-8'))
-        name = data.get('name')
-        voice_id = data.get('voice_id')
-        voice = data.get('voice')
-        user_id = data.get('user_id')
-        background_music = data.get('background_music')
-        background_music_id = data.get('background_music_id')
+        name = request.POST.get('name')
+        voice = request.POST.get('voice')
+        voice_id = request.POST.get('voice_id')
+        background_music = request.POST.get('background_music')
+        background_music_id = request.POST.get('background_music_id')
 
         # 处理文件上传
         novel_file = request.FILES.get('novel_file')
@@ -323,7 +320,7 @@ def add_novel_by_txt(request):
                     download_max=0,
                     add_back_progress=0,
                     add_back_max=0,
-                    userid=user_id,
+                    userid=get_user_id(request),
                     voice=voice,
                     time=datetime.datetime.now(),
                     txt_path=file_path  # 保存文件路径
