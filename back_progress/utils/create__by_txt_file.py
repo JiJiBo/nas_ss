@@ -24,7 +24,7 @@ class CreateByTxtFile(CreateAudioBookBase):
     async def split_by_chapter(self):
         print("阅读中...")
         txt_content = self.read_whole_file()
-        print("阅读完成")
+        print("阅读完成", "总字数", len(txt_content))
         print("分割中...")
         chapters = split_txt(txt_content, self.title_pattern)
         print("分割完成")

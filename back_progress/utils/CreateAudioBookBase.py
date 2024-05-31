@@ -133,7 +133,7 @@ class CreateAudioBookBase:
         page = 0
         for title, content in chapters:
             page += 1
-            print(f"正在合成 {title}")
+            print(f"正在合成 {title}","总字数",len(content))
             startTimme = time.time()
             savePath, title = await self.read_one_chapter(title, content, page)
             readTme = time.time() - startTimme
