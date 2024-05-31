@@ -3,7 +3,7 @@ import re
 
 # 根据标题分割txt小说文件，并保留标题。
 # 返回一个字典，key为标题，value为小说内容
-def split_txt(txt_content, title_pattern=r"第[一二三四五六七八九十1234567890]+章 \S+"):
+def split_txt(txt_content, title_pattern=r"第[一二三四五六七八九十1234567890]+章\S+"):
     # 使用正则表达式找到所有的标题
     titles = re.findall(title_pattern, txt_content)
     if not titles:
@@ -27,7 +27,7 @@ def split_txt(txt_content, title_pattern=r"第[一二三四五六七八九十123
 if __name__ == '__main__':
     # 示例使用
     txt_content = """
-    第一章 开始
+    第一章开始
     这是第一章的内容。
 
     第二章 继续
@@ -40,5 +40,5 @@ if __name__ == '__main__':
     """
 
     result = split_txt(txt_content)
-    for title, content in result.items():
+    for title, content in result :
         print(f"{title}: {content}")
