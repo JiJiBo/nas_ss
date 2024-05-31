@@ -22,6 +22,7 @@ from django.contrib.auth import get_user_model
 
 @csrf_exempt
 def login(request):
+    print(request.method)
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
         name = data.get('name')
