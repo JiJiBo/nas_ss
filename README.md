@@ -16,11 +16,19 @@
 - 后台播放模块
 
 # 如何开始
+
 ## 装包
+
 ```angular2html
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+# 导出依赖
 
 ```
+pip freeze > requirements.txt
+```
+
 ## 迁移数据库
 
 ```angular2html
@@ -32,6 +40,7 @@ python manage.py inspectdb>./my_sql_db/models.py
 - 参见 sql/sql.sql 文件
 
 # 如何运行
+
 ```angular2html
 celery  -A nas_ss flower
 celery -A nas_ss worker -l info
@@ -39,8 +48,3 @@ python manage.py runserver 0.0.0.0:8000
 ```
 
 
-# 导出依赖
-
-```
-pip freeze > requirements.txt
-```
