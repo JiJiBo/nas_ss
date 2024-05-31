@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-x$w0bicj714v64_$4shl#5gc)mprk#tnw*p3a(6b90o_(clr8f
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+# 最大上传大小200M
+DATA_UPLOAD_MAX_MEMORY_SIZE = 200 * 1024 * 1024
 ALLOWED_HOSTS = ['*']
 # 数据库配置
 DATABASES = {
