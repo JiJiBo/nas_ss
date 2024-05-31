@@ -17,6 +17,7 @@ class CreateByUrlFile(CreateAudioBookBase):
         self.type = "link"
 
     async def get_whole_file(self):
+        # TODO: 这里需要自己加上爬虫模块
         if self.engine == "qm":
             return await pachong(self, self.txt_url_path, self.saveBookPath)
         return await pachong(self, self.txt_url_path, self.saveBookPath)
