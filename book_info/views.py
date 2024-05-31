@@ -293,7 +293,7 @@ def add_novel_by_txt(request):
     print(request.method)
     if request.method == 'POST':
         # 解析JSON数据
-        data = json.loads(request.POST.get('data'))
+        data = json.loads(request.body.decode('utf-8'))
         name = data.get('name')
         voice_id = data.get('voice_id')
         voice = data.get('voice')
