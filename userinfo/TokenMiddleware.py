@@ -15,7 +15,7 @@ class TokenMiddleware:
         EXCLUDED_FUNCTIONS = ['/login', '/register']
         print(request.path)
         print(request.method)
-        if request.method == "OPTIONS":
+        if request.method == "OPTIONS" or request.path.startswith('/files'):
             response = self.get_response(request)
             return response
         if not any(request.path.startswith(func) for func in EXCLUDED_FUNCTIONS):

@@ -11,6 +11,12 @@
 # 注意
 
 - 这只是后台服务，前端请参考 https://github.com/JiJiBo/nas_ss_app.git
+- 后台是两个服务，一个是做计算，用的django，一个做存储，中间用ftp做传输。
+- 你的硬盘够用的话，可以使用一个服务器，但是需要自己修改一些东西。不要用ftp做传输
+
+```angular2html
+CreateAudioBookBase 的 is_to_ftp字段置为false（没有测试）
+```
 
 # 开始
 
@@ -48,7 +54,7 @@ python manage.py runserver 0.0.0.0:8000
 ./restart_services.sh
 ```
 
-2. 开启
+2. 开启接口服务器
 
 ```angular2html
 ./start_services.sh
