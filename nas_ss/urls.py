@@ -36,4 +36,5 @@ urlpatterns = [
     path("update_novel", csrf_exempt(update_novel), name="update_novel"),
     path("delete_novel", csrf_exempt(delete_novel), name="delete_novel"),
     path("clear_novel", csrf_exempt(clear_novel), name="clear_novel"),
+    path('files/<path:filename>', csrf_exempt(file_response), name="file_response"),
 ]
