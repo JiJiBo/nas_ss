@@ -322,8 +322,7 @@ def add_novel_by_txt(request):
                     add_back_max=0,
                     userid=get_user_id(request),
                     voice=voice,
-                    time=datetime.datetime.now(),
-                    txt_path=file_path  # 保存文件路径
+                    time=datetime.datetime.now()  # 保存文件路径
                 )
             else:
                 return getErrorResult("名称和链接为必填项")
