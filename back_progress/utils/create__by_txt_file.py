@@ -14,6 +14,7 @@ class CreateByTxtFile(CreateAudioBookBase):
                          background_volume_reduction, encoding)
         self.txt_file_path = txt_file_path
         self.title_pattern = title_pattern
+        self.type = "path"
 
     def read_whole_file(self):
         with open(self.txt_file_path, 'r', encoding=self.encoding) as file:
@@ -25,6 +26,8 @@ class CreateByTxtFile(CreateAudioBookBase):
         txt_content = self.read_whole_file()
         self.saveAudioPath = os.path.join(self.saveAudioPath, self.book_name)
         print("音频保存路径：", self.saveAudioPath)
+        self.saveBookPath = self.small_say.path
+        print("书籍保存路径：", self.saveBookPath)
         self.saveBgmPath = os.path.join(self.saveBgmPath, self.book_name)
         print("背景音乐保存路径：", self.saveBgmPath)
         os.makedirs(self.saveAudioPath, exist_ok=True)

@@ -14,6 +14,7 @@ class CreateByUrlFile(CreateAudioBookBase):
         self.txt_url_path = txt_url_path
         print("下载地址：", txt_url_path)
         self.engine = engine
+        self.type = "link"
 
     async def get_whole_file(self):
         if self.engine == "qm":

@@ -25,13 +25,16 @@ class CreateAudioBookBase:
         self.saveBookPath = saveBookPath
         self.is_to_ftp = is_to_ftp
         self.book_name = None  # 初始化 book_name 属性
+        self.type = "base"
 
     def del_all_files(self):
-
-        for root, dirs, files in os.walk(self.saveBookPath):
-            for file in files:
-                file_path = os.path.join(root, file)
-                os.remove(file_path)
+        if self.type == "link":
+            for root, dirs, files in os.walk(self.saveBookPath):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    os.remove(file_path)
+        elif self.type == "path":
+            os.remove(self.saveBookPath)
         for root, dirs, files in os.walk(self.saveAudioPath):
             for file in files:
                 file_path = os.path.join(root, file)
