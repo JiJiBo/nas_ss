@@ -68,8 +68,9 @@ class CreateAudioBookBase:
         savePath = os.path.join(self.saveAudioPath, f"{title}.mp3")
         data = content, savePath, self.voice
         await text2audio(data)
-        self.merge_audio(savePath)
-        await self.save_convert_history(title, page, savePath)
+        remote_file = self.merge_audio(savePath)
+        if remote_file:
+            await self.save_convert_history(title, page, remote_file)
         return savePath, title
 
     def merge_audio(self, audio_files):
@@ -79,10 +80,12 @@ class CreateAudioBookBase:
             timeStr = os.path.join(timeStr, time.strftime("%H", time.localtime()))
             ftp_client = get_def_ftp_client()
             ftp_client.connect()
-            ftp_client.upload_file(audio_files, timeStr)
+            remote_file = ftp_client.upload_file(audio_files, timeStr)
             ftp_client.disconnect()
+            return remote_file
         else:
             print("文件并不会转移")
+            return None
 
     async def is_had_ftp(self, title, get_step):
         res = await haveThisBookTitle((self.small_say, title, get_step))
@@ -117,8 +120,9 @@ class CreateAudioBookBase:
         to_path = os.path.join(self.saveBgmPath, f"{title}.mp3")
         data = from_path, to_path, background_music, background_volume_reduction
         add_back(data)
-        self.merge_audio(to_path)
-        await self.save_bgm_history(title, page, to_path)
+        remote_file = self.merge_audio(to_path)
+        if remote_file:
+            await self.save_bgm_history(title, page, remote_file)
         return data
 
     async def forward(self):
