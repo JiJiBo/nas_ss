@@ -7,16 +7,17 @@ from back_progress.utils.qm.pachong import pachong
 
 
 class CreateByUrlFile(CreateAudioBookBase):
-    def __init__(self, txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
+    def __init__(self, book_id, txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10, encoding="utf-8", engine="qm"):
-        super().__init__(saveBookPath, saveAudioPath, saveBgmPath, voice, background_music, background_volume_reduction, encoding)
+        super().__init__(book_id, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
+                         background_volume_reduction, encoding)
         self.txt_url_path = txt_url_path
         self.engine = engine
 
     async def get_whole_file(self):
         if self.engine == "qm":
-            return await pachong(self.txt_url_path, self.saveBookPath)
-        return await pachong(self.txt_url_path, self.saveBookPath)
+            return await pachong(self,self.txt_url_path, self.saveBookPath)
+        return await pachong(self,self.txt_url_path, self.saveBookPath)
 
     async def split_by_chapter(self):
         print("爬取...")
@@ -49,7 +50,7 @@ async def main():
     saveAudioPath = os.path.join(root, "audio")
     saveBgmPath = os.path.join(root, "bgm")
     voice = "zh-CN-YunxiNeural"
-    creater = CreateByUrlFile(txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
+    creater = CreateByUrlFile(1,txt_url_path, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                               encoding="utf-8")
     await creater.forward()
 

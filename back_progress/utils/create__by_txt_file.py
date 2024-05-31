@@ -6,11 +6,12 @@ from back_progress.utils.config import tesst_dir_data
 from back_progress.utils.split_txt import split_txt
 
 
-
 class CreateByTxtFile(CreateAudioBookBase):
-    def __init__(self, txt_file_path, saveAudioPath, saveBgmPath, voice, background_music,
-                 background_volume_reduction=10, encoding="utf-8", title_pattern=r"第[一二三四五六七八九十1234567890]+章 \S+"):
-        super().__init__(None, saveAudioPath, saveBgmPath, voice, background_music, background_volume_reduction, encoding)
+    def __init__(self, book_id, txt_file_path, saveAudioPath, saveBgmPath, voice, background_music,
+                 background_volume_reduction=10, encoding="utf-8",
+                 title_pattern=r"第[一二三四五六七八九十1234567890]+章 \S+"):
+        super().__init__(book_id, None, saveAudioPath, saveBgmPath, voice, background_music,
+                         background_volume_reduction, encoding)
         self.txt_file_path = txt_file_path
         self.title_pattern = title_pattern
         self.book_name = os.path.basename(self.txt_file_path).split(".")[0]
@@ -39,7 +40,7 @@ async def main():
     saveAudioPath = os.path.join(root, "audio")
     saveBgmPath = os.path.join(root, "bgm")
     voice = "zh-CN-YunxiNeural"
-    creater = CreateByTxtFile(txt_file_path, saveAudioPath, saveBgmPath, voice, background_music, encoding="utf-8")
+    creater = CreateByTxtFile(1, txt_file_path, saveAudioPath, saveBgmPath, voice, background_music, encoding="utf-8")
     await creater.forward()
 
 

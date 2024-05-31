@@ -1,15 +1,21 @@
 import os
 import time
+import uuid
+
+from asgiref.sync import sync_to_async
 
 from back_progress.utils.add_back import add_back
 from back_progress.utils.ftp_client import get_def_ftp_client
 from back_progress.utils.txt2voice import text2audio
+from my_sql_db.models import SmallSay
+from my_sql_db.utils.utils import haveThisBookTitle, saveBookMsg
 from utils.utils.TimeUtils import time_to_time_length
 
 
 class CreateAudioBookBase:
-    def __init__(self, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
+    def __init__(self, book_id, saveBookPath, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10, encoding="utf-8", is_to_ftp=True):
+        self.book_id = book_id
         self.voice = voice
         self.background_music = background_music
         self.background_volume_reduction = background_volume_reduction
@@ -53,11 +59,15 @@ class CreateAudioBookBase:
     async def split_by_chapter(self):
         raise NotImplementedError("This method should be overridden in subclasses")
 
-    async def read_one_chapter(self, title, content):
+    async def read_one_chapter(self, title, content, page):
+        if self.is_had_ftp(title, 2) or self.is_had_ftp(title, 5):
+            print("已经转换过该章节")
+            return
         savePath = os.path.join(self.saveAudioPath, f"{title}.mp3")
         data = content, savePath, self.voice
         await text2audio(data)
         self.merge_audio(savePath)
+        await self.save_convert_history(title, page, savePath)
         return savePath, title
 
     def merge_audio(self, audio_files):
@@ -72,14 +82,41 @@ class CreateAudioBookBase:
         else:
             print("文件并不会转移")
 
-    def add_bg_music(self, from_path, title, background_music, background_volume_reduction):
+    async def is_had_ftp(self, title, get_step):
+        res = await haveThisBookTitle((self.small_say, title, get_step))
+        return res
+
+    # 保存章节转换记录
+    async def save_chapter_history(self, path, get_step, name, page, dir):
+        man_uuid = str(uuid.uuid4())
+        data = path, self.small_say, get_step, dir, name, man_uuid, page
+        return await saveBookMsg(data)
+
+    # 保存语音转换进度
+    async def save_convert_history(self, name, page, path):
+        return await self.save_chapter_history(path, 2, name, page, self.saveAudioPath)
+
+    # 保存背景音转换进度
+    async def save_bgm_history(self, name, page, path):
+        return await self.save_chapter_history(path, 5, name, page, self.saveBgmPath)
+
+    @sync_to_async
+    def get_small_say(self):
+        return SmallSay.objects.get(id=self.book_id)
+
+    async def add_bg_music(self, from_path, title, background_music, background_volume_reduction, page):
+        if self.is_had_ftp(title, 5):
+            print("该章节已经加了背景音")
+            return
         to_path = os.path.join(self.saveBgmPath, f"{title}.mp3")
         data = from_path, to_path, background_music, background_volume_reduction
         add_back(data)
         self.merge_audio(to_path)
+        await self.save_bgm_history(title, page, to_path)
         return data
 
     async def forward(self):
+        self.small_say = await self.get_small_say()
         chapters = await self.split_by_chapter()
         print("--------------------------------------")
         print("开始合成...")
@@ -87,16 +124,17 @@ class CreateAudioBookBase:
         countTime = 0
         totalChapters = len(chapters)
         processedChapters = 0
-
+        page = 0
         for title, content in chapters:
+            page += 1
             print(f"正在合成 {title}")
             startTimme = time.time()
-            savePath, title = await self.read_one_chapter(title, content)
+            savePath, title = await self.read_one_chapter(title, content, page)
             readTme = time.time() - startTimme
             print(f"{title} 阅读完成", f"耗时：{time_to_time_length(readTme)} ")
             print(f"{title} 开始加背景音...")
             bgTme = time.time()
-            self.add_bg_music(savePath, title, self.background_music, self.background_volume_reduction)
+            await self.add_bg_music(savePath, title, self.background_music, self.background_volume_reduction, page)
             bgTme = time.time() - bgTme
             print(f"{title} 加背景音完成", f"耗时：{time_to_time_length(bgTme)} ")
             allTme = time.time() - startTimme
