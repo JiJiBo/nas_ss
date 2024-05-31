@@ -27,7 +27,7 @@ def detect_file_encoding(file_path):
 if __name__ == '__main__':
     # 示例使用
     txt_content = ""
-    path = r'C:\Users\Nas\Downloads\帝霸.txt'
+    path = r'C:\Users\Nas\Downloads\ '
     with open(path, 'r', encoding=detect_file_encoding(path)) as f:
         txt_content = f.read()
 
@@ -35,6 +35,8 @@ if __name__ == '__main__':
 
     result = split_txt(txt_content)
     print(len(result))
-    for title, content in result[-100:]:
+    for title, content in result[:400]:
+        if len(content) == 0:
+            continue
         print(f"{title} --  ")
         print("-----")
