@@ -1,6 +1,9 @@
 import json
+import os
 
 import jwt
+from django.contrib.admin.utils import unquote
+from django.http import HttpResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from my_sql_db.models import User
@@ -96,3 +99,22 @@ def logout(request):
             return getErrorResult('User not found')
     else:
         return getErrorResult('Only POST method allowed')
+
+
+def file_response(request, filename):
+    filename = unquote(filename)  # 解码包含特殊字符的文件名
+    file_path = os.path.join(settings.MEDIA_ROOT, filename)
+    print(file_path)
+    if os.path.exists(file_path):
+        if file_path.endswith(".mp3"):
+            with open(file_path, 'rb') as f:
+                audio_data = f.read()
+
+            # 构建响应并返回音频文件内容
+            response = HttpResponse(audio_data, content_type='audio/mpeg')
+            return response
+        else:
+            response = FileResponse(open(file_path, 'rb'), content_type='application/octet-stream')
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        return response
+    return HttpResponse("File not found.", status=404)
