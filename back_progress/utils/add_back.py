@@ -10,6 +10,8 @@ def add_back(data):
     if os.path.exists(to_path):
         print(f"{to_path}文件已存在")
         return
+    print("from_path",from_path)
+    print("to_path",to_path)
     original_audio = AudioSegment.from_mp3(from_path)
     background_music = AudioSegment.from_mp3(background_music)
     # 调整背景音乐的音量
