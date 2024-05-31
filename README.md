@@ -9,23 +9,26 @@
 - 支持上传txt或者通过链接，由后台爬取（只适配了七猫），更多功能，可以自己拓展
 ## 截图
 
-- 选取文件
-  ![img (1).jpg](img%2Fimg%20%281%29.jpg){width=50%}
+# 项目页面
 
-- 首页
-  ![img (2).jpg](img%2Fimg%20%282%29.jpg){width=50%}
+## 选取文件
+<img src="img/img%20%281%29.jpg" width="50%" alt="选取文件">
 
-- 详情页
-  ![img (3).jpg](img%2Fimg%20%283%29.jpg){width=50%}
+## 首页
+<img src="img/img%20%282%29.jpg" width="50%" alt="首页">
 
-- 更新
-  ![img (4).jpg](img%2Fimg%20%284%29.jpg){width=50%}
+## 详情页
+<img src="img/img%20%283%29.jpg" width="50%" alt="详情页">
 
-- 后台页面
-  ![back.png](img%2Fback.png){width=50%}
+## 更新
+<img src="img/img%20%284%29.jpg" width="50%" alt="更新">
 
-- ios播放
-  ![ios.jpg](img%2Fios.jpg){width=50%}
+## 后台页面
+<img src="img/back.png" width="50%" alt="后台页面">
+
+## iOS播放
+<img src="img/ios.jpg" width="50%" alt="iOS播放">
+
 # 注意
 
 - 这只是后台服务，前端请参考 https://github.com/JiJiBo/nas_ss_app.git
