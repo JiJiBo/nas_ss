@@ -1,6 +1,8 @@
 import asyncio
 import os
 
+from asgiref.sync import sync_to_async
+
 from back_progress.utils.CreateAudioBookBase import CreateAudioBookBase
 from back_progress.utils.config import tesst_dir_data
 from back_progress.utils.split_txt import split_txt
@@ -9,7 +11,7 @@ from back_progress.utils.split_txt import split_txt
 class CreateByTxtFile(CreateAudioBookBase):
     def __init__(self, book_id, txt_file_path, saveAudioPath, saveBgmPath, voice, background_music,
                  background_volume_reduction=10, encoding="utf-8",
-                 title_pattern = r"(\n\s*第\s*[\d一二三四五六七八九十百千万]+\s*章.*)"):
+                 title_pattern=r"(\n\s*第\s*[\d一二三四五六七八九十百千万]+\s*章.*)"):
         super().__init__(book_id, None, saveAudioPath, saveBgmPath, voice, background_music,
                          background_volume_reduction, encoding)
         self.txt_file_path = txt_file_path
@@ -28,9 +30,17 @@ class CreateByTxtFile(CreateAudioBookBase):
         print("分割中...")
         chapters = split_txt(txt_content, self.title_pattern)
         print("分割完成")
+        await self.saveMaxProgress(chapters)
         print(self.book_name, "分割结果如下：", len(chapters), "章")
         print("--------------------------------------")
         return chapters
+
+    @sync_to_async
+    def saveMaxProgress(self, chapters):
+        self.small_say.download_max = len(chapters)
+        self.small_say.add_back_max = len(chapters)
+        self.small_say.conversion_max = len(chapters)
+        self.small_say.save()
 
 
 async def main():

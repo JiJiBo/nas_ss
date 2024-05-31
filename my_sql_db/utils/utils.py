@@ -65,20 +65,26 @@ def saveBookMsg(data):
         small_say.download_progress += 1
 
         small_say.save()
-    elif get_step == 3:
+    elif get_step == 2:
         print(name, "conversion_progress", "+1")
         small_say.conversion_progress += 1
         small_say.save()
-    elif get_step == 6:
+    elif get_step == 5:
         print(name, "add_back_progress", "+1")
         small_say.add_back_progress += 1
         small_say.save()
+
+
 @sync_to_async
 def get_small_say(id):
     return SmallSay.objects.get(id=id)
+
+
 def haveThisBookLink(link):
     books = SmallSay.objects.filter(link=link)
     return len(books) > 0
+
+
 def haveThisBookLinkByPath(path):
     books = SmallSay.objects.filter(path=path)
     return len(books) > 0
