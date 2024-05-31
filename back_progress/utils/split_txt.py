@@ -1,44 +1,34 @@
 import re
 
+def split_txt(text, title_pattern=r'(\n\s*第\s*[\d一二三四五六七八九十百千万]+\s*章.*)'):
+    # 使用re.split方法来分割文本，保留括号内的分割模式作为分割结果的一部分
+    # 正则表达式已更新，以包括中文数字
+    parts = re.split(title_pattern, text, flags=re.MULTILINE)
 
-# 根据标题分割txt小说文件，并保留标题。
-# 返回一个字典，key为标题，value为小说内容
-def split_txt(txt_content, title_pattern=r"第[一二三四五六七八九十1234567890]+章\S+"):
-    # 使用正则表达式找到所有的标题
-    titles = re.findall(title_pattern, txt_content)
-    if not titles:
-        return {}
+    # 由于re.split会在每个匹配的章节标题前后分割文本，第一部分通常是前言或引言
+    # 为避免数组越界错误，需要检查parts数组的长度
+    if len(parts) < 3:
+        return []  # 如果没有章节或格式不正确，返回空列表
 
-    # 使用正则表达式分割内容，保留分隔符（标题）
-    parts = re.split(f'({title_pattern})', txt_content)
-
-    # 初始化字典
-    novel_dict = []
-
-    # 遍历分割后的部分，跳过第一个元素，因为它是在第一个标题之前的内容
-    for i in range(1, len(parts), 2):
-        title = parts[i].strip()
-        content = parts[i + 1].strip() if i + 1 < len(parts) else ""
-        novel_dict .append([title,content])
-
-    return novel_dict
-
+    # 首部不属于任何章节的内容，可以单独处理或丢弃
+    # parts列表中，奇数索引为章节标题，偶数索引为对应的内容
+    return [(parts[i].strip(), parts[i + 1].strip()) for i in range(1, len(parts), 2)]
 
 if __name__ == '__main__':
     # 示例使用
     txt_content = """
-    第一章开始
-    这是第一章的内容。
+这里是前言，可能提到第一章的内容。
+第1章 章节开始
+这是一段内容，提到了第二章的一个事件。
+第二章 另一个章节
+这是正文，其中提到了“当我们来到第3章的时候”。
+第三章 最后一个章节
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
 
-    第二章 继续
-    这是第二章的内容。
-    
-    
-    
-    第411章 继续
-    这是第411章的内容。
-    """
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+"""
 
     result = split_txt(txt_content)
-    for title, content in result :
-        print(f"{title}: {content}")
+    for title, content in result:
+        print(f"{title}   --   {content}")
+        print("-----")
