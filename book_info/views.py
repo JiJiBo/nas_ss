@@ -210,6 +210,8 @@ def get_novel(request):
                 'id': novel.id,
                 'name': novel.name,
                 'link': novel.link,
+                'path': novel.path,
+                'type': novel.type,
                 'last_updated': novel.last_updated.strftime("%Y-%m-%d %H:%M:%S") if novel.last_updated else None,
                 'background_music': novel.background_music,
                 'download_progress': download_progress,
