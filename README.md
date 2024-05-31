@@ -37,3 +37,10 @@ celery  -A nas_ss flower
 celery -A nas_ss worker -l info
 python manage.py runserver 0.0.0.0:8000 
 ```
+
+
+# 导出依赖
+
+```
+pip freeze > requirements.txt
+```
