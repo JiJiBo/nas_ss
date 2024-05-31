@@ -24,6 +24,15 @@ class CreateByTxtFile(CreateAudioBookBase):
     async def split_by_chapter(self):
         print("阅读中...")
         txt_content = self.read_whole_file()
+        self.saveAudioPath = os.path.join(self.saveAudioPath, self.book_name)
+        print("音频保存路径：", self.saveAudioPath)
+        self.saveBookPath = os.path.join(self.saveBookPath, self.book_name)
+        print("书籍保存路径：", self.saveBookPath)
+        self.saveBgmPath = os.path.join(self.saveBgmPath, self.book_name)
+        print("背景音乐保存路径：", self.saveBgmPath)
+        os.makedirs(self.saveAudioPath, exist_ok=True)
+        os.makedirs(self.saveBgmPath, exist_ok=True)
+        os.makedirs(self.saveBookPath, exist_ok=True)
         print("阅读完成", "总字数", len(txt_content))
         print("分割中...")
         chapters = split_txt(txt_content, self.title_pattern)
@@ -32,8 +41,6 @@ class CreateByTxtFile(CreateAudioBookBase):
         print(self.book_name, "分割结果如下：", len(chapters), "章")
         print("--------------------------------------")
         return chapters
-
-
 
 
 async def main():
