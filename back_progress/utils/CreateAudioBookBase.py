@@ -143,6 +143,7 @@ class CreateAudioBookBase:
         countTime = 0
         totalChapters = len(chapters)
         await self.saveMaxProgress(totalChapters)
+        await self.saveName(self.book_name)
         processedChapters = 0
         page = 0
         for title, content in chapters:
@@ -184,4 +185,9 @@ class CreateAudioBookBase:
         self.small_say.download_max = chapters
         self.small_say.add_back_max = chapters
         self.small_say.conversion_max = chapters
+        self.small_say.save()
+
+    @sync_to_async
+    def saveName(self, name):
+        self.small_say.name = name
         self.small_say.save()

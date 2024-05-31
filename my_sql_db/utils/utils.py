@@ -80,6 +80,9 @@ def get_small_say(id):
     return SmallSay.objects.get(id=id)
 
 
+
+
+
 def haveThisBookLink(link):
     books = SmallSay.objects.filter(link=link)
     return len(books) > 0

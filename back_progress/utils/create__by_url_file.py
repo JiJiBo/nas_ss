@@ -25,6 +25,7 @@ class CreateByUrlFile(CreateAudioBookBase):
         print("爬取...")
         books, title = await self.get_whole_file()
         self.book_name = title
+
         self.saveAudioPath = os.path.join(self.saveAudioPath, self.book_name)
         print("音频保存路径：", self.saveAudioPath)
         self.saveBookPath = os.path.join(self.saveBookPath, self.book_name)
