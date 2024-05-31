@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     "back_progress.apps.BackProgressConfig",
     "my_sql_db.apps.MySqlDbConfig",
     "userinfo.apps.UserinfoConfig",
-    "book_info.apps.BookInfoConfig"
+    "book_info.apps.BookInfoConfig",
+    "celery_work.apps.CeleryWorkConfig"
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -166,3 +167,13 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+############# celery的配置信息######
+from .celery import *
+
+# 指定 Broker 使用 Redis，Broker 负责任务的分发和调度
+CELERY_BROKER_URL = CELERY_BROKER_URL
+# 指定结果存储 Backend 使用 Redis，Backend CELERY_RESULT_BACKEND = 'redis://192.168.1.10:26379/1'负责存储任务执行结果
+# django-celery-results 设置
+# CELERY_RESULT_BACKEND = 'django-db'
+os.environ['DJANGO_ALLOW_ASYNC_UNSAFE'] = 'true'
+CORS_ALLOW_ALL_ORIGINS = True  # 生产环境中应谨慎使用
