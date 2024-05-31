@@ -1,8 +1,6 @@
 import asyncio
 import os
 
-from asgiref.sync import sync_to_async
-
 from back_progress.utils.CreateAudioBookBase import CreateAudioBookBase
 from back_progress.utils.config import tesst_dir_data
 from back_progress.utils.split_txt import split_txt
