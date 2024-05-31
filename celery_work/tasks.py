@@ -5,6 +5,7 @@ from celery import shared_task
 
 from back_progress.utils.create__by_txt_file import CreateByTxtFile
 from back_progress.utils.create__by_url_file import CreateByUrlFile
+from back_progress.utils.split_txt import detect_file_encoding
 from my_sql_db.utils.utils import get_small_say
 from nas_ss.celery import app
 
@@ -34,5 +35,6 @@ async def download_novel(id):
         await creater.forward()
     elif small_say.type == "path":
         path = small_say.path
-        creater = CreateByTxtFile(id, path, saveAudioPath, saveBgmPath, voice, background_music, encoding="utf-8")
+        creater = CreateByTxtFile(id, path, saveAudioPath, saveBgmPath, voice, background_music,
+                                  encoding=detect_file_encoding(path))
         await creater.forward()

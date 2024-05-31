@@ -1,5 +1,7 @@
 import re
 
+import chardet
+
 
 def split_txt(text, title_pattern=r'(\n\s*第\s*[\d一二三四五六七八九十百千万]+\s*章.*)'):
     # 使用re.split方法来分割文本，保留括号内的分割模式作为分割结果的一部分
@@ -16,10 +18,17 @@ def split_txt(text, title_pattern=r'(\n\s*第\s*[\d一二三四五六七八九�
     return [(parts[i].strip(), parts[i + 1].strip()) for i in range(1, len(parts), 2)]
 
 
+def detect_file_encoding(file_path):
+    with open(file_path, 'rb') as f:
+        raw_data = f.read()
+    return chardet.detect(raw_data)['encoding']
+
+
 if __name__ == '__main__':
     # 示例使用
     txt_content = ""
-    with open(r'C:\Users\Nas\Downloads\帝霸.txt', 'r', encoding='utf-8') as f:
+    path = r'C:\Users\Nas\Downloads\帝霸.txt'
+    with open(path, 'r', encoding=detect_file_encoding(path)) as f:
         txt_content = f.read()
 
     # 假设txt_content是一个包含章节标题和内容的字符串
