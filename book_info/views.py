@@ -1,10 +1,12 @@
 import datetime
 import json
+import os
 
 from django.core.files.storage import default_storage
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.decorators.csrf import csrf_exempt
 
+from back_progress.utils.ftp_client import get_def_ftp_client
 from celery_work.tasks import download_novel_in_thread
 from my_sql_db.models import SmallSay, Bgm, Voice, Books
 from my_sql_db.utils.utils import haveThisBookLink, haveThisBookLinkByPath
@@ -340,5 +342,95 @@ def add_novel_by_txt(request):
         novel.save()
         return getOkResult("小说添加成功")
 
+    else:
+        return getErrorResult("不支持的请求方法")
+
+
+@csrf_exempt
+def update_novel(request):
+    """更新小说"""
+    if request.method == 'GET':
+        try:
+            novel_id = request.GET.get('novel_id')
+            novel = SmallSay.objects.get(id=novel_id)
+            if novel is None:
+                return getErrorResult("没有这个小说")
+            task_id = download_novel_in_thread.delay(novel.id)
+            novel.data = str(task_id)
+            print(task_id)
+            print(novel.data)
+            novel.save()
+        except Exception as e:
+            print(e)
+            return getErrorResult(str(e))
+
+        # 更新小说信息，类似获取参数、更新字段的操作
+
+        return getOkResult("小说更新成功")
+    else:
+        return getErrorResult("不支持的请求方法")
+
+
+@csrf_exempt
+def delete_novel(request):
+    """删除小说"""
+    if request.method == 'GET':
+        try:
+            book_id = request.GET.get('novel_id')
+            print(book_id)
+            novel = SmallSay.objects.get(id=book_id)
+            print(novel.name)
+            books = Books.objects.filter(book_id=book_id)
+            if books not in [None, []]:
+                ftp_client = get_def_ftp_client()
+                ftp_client.connect()
+                for book in books:
+                    if book.get_step != 1:
+                        ftp_client.delete_file(book.path, book.dir)
+                    else:
+                        os.path.exists(book.path) and os.remove(book.path)
+                    book.delete()
+            novel.delete()
+        except Exception as e:
+            print(e)
+            return getErrorResult(str(e))
+
+        return getOkResult("小说删除成功")
+    else:
+        return getErrorResult("不支持的请求方法")
+
+
+@csrf_exempt
+def clear_novel(request):
+    """清除小说数据"""
+    if request.method == 'GET':
+        # 从请求中获取筛选参数
+
+        try:
+            book_id = request.GET.get('novel_id')
+            print(book_id)
+            novel = SmallSay.objects.get(id=book_id)
+            print(novel.name)
+            books = Books.objects.filter(book_id=book_id)
+            print(len(books))
+            if books not in [None, []]:
+                ftp_client = get_def_ftp_client()
+                ftp_client.connect()
+                for book in books:
+                    print(book.path)
+                    if book.get_step != 1:
+                        ftp_client.delete_file(book.path, book.dir)
+                    else:
+                        os.path.exists(book.path) and os.remove(book.path)
+                    book.delete()
+            novel.add_back_progress = 0
+            novel.download_progress = 0
+            novel.conversion_progress = 0
+            novel.save()
+        except Exception as e:
+            print(e)
+            return getErrorResult(str(e))
+
+        return getOkResult("小说清除成功")
     else:
         return getErrorResult("不支持的请求方法")
