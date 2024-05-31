@@ -14,6 +14,7 @@ class TokenMiddleware:
     def __call__(self, request):
         EXCLUDED_FUNCTIONS = ['/login', '/register']
         print(request.path)
+        print(request.method)
         if not any(request.path.startswith(func) for func in EXCLUDED_FUNCTIONS):
             token = request.headers.get('Authorization')
             if token:
