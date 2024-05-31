@@ -5,8 +5,14 @@
 - 基于python、diango的小说转语音 并且加背景音的服务
 - 可以给小说加上想要的背景音，并支持选取读书者的声音
 - 支持用户系统，支持token认证，支持后台任务
+- 声音优美，可自定义，选择多
+- 支持上传txt或者通过链接，由后台爬取（只适配了七猫），更多功能，可以自己拓展
 
-# 如何开始
+# 注意
+
+- 这只是后台服务，前端请参考 https://github.com/JiJiBo/nas_ss_app.git
+
+# 开始
 
 ## 装包
 
@@ -14,7 +20,7 @@
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-## 如何创建数据库
+## 创建数据库
 
 - 参见 sql/sql.sql 文件
 
@@ -56,7 +62,7 @@ python manage.py runserver 0.0.0.0:8000
 
 # 声明
 
-- 这部分是由 https://github.com/shing-yu/7mao-novel-downloader.git 修改而来
+- 爬虫部分是由 https://github.com/shing-yu/7mao-novel-downloader.git 修改而来
 - 由本人于2024年5月31日修改，适配我的需求
 
 # 开源许可证
