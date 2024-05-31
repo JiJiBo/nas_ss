@@ -105,6 +105,11 @@ class CreateAudioBookBase:
         print("保存语音转换进度", name)
         return await self.save_chapter_history(path, 2, name, page, self.saveAudioPath)
 
+    # 保存下载进度
+    async def save_download_history(self, name, page, path):
+        print("保存下载进度", name)
+        return await self.save_chapter_history(path, 1, name, page, self.saveAudioPath)
+
     # 保存背景音转换进度
     async def save_bgm_history(self, name, page, path):
         print("保存背景音转换进度", name)
