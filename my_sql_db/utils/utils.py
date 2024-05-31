@@ -34,7 +34,8 @@ def haveThisBookTitle(data):
         for title in titles:
             local_path = os.path.join(title.dir, f"{title.name}.mp3")
             ftp_path = title.path
-            os.remove(local_path)
+            if os.path.exists(local_path):
+                os.remove(local_path)
             client = get_def_ftp_client()
             client.connect()
             client.delete_file(ftp_path)
