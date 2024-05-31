@@ -14,7 +14,6 @@ class CreateByTxtFile(CreateAudioBookBase):
                          background_volume_reduction, encoding)
         self.txt_file_path = txt_file_path
         self.title_pattern = title_pattern
-        self.book_name = os.path.basename(self.txt_file_path).split(".")[0]
 
     def read_whole_file(self):
         with open(self.txt_file_path, 'r', encoding=self.encoding) as file:

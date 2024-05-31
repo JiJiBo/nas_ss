@@ -127,6 +127,7 @@ class CreateAudioBookBase:
 
     async def forward(self):
         self.small_say = await self.get_small_say()
+        self.book_name = self.small_say.name
         chapters = await self.split_by_chapter()
         print("--------------------------------------")
         print("开始合成...")
