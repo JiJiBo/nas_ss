@@ -52,7 +52,7 @@ class CreateAudioBookBase:
         print("读取中...")
         chapters = []
         for book in books:
-            book_path = os.path.join(self.saveBookPath, book["path"])
+            book_path = book["path"]
             with open(book_path, "r", encoding=self.encoding) as f:
                 content = f.read()
                 chapters.append([book["name"], content])
