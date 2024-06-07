@@ -182,7 +182,7 @@ class CreateAudioBookBase:
 
             if len(content) == 0:
                 continueChapter += 1
-                print(f"跳过 {title}，没有内容")
+                print(f"跳过 {title}，没有内容,跳过了{continueChapter}次")
                 continue
             page += 1
             print(f"正在合成 {title}", "总字数", len(content))
