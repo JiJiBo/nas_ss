@@ -180,6 +180,8 @@ class CreateAudioBookBase:
         for title, content in chapters:
 
             if len(content) == 0:
+                totalChapters -= 1
+                processedChapters -= 1
                 print(f"跳过 {title}，没有内容")
                 continue
             page += 1
