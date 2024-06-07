@@ -34,7 +34,7 @@ class TokenMiddleware:
                                              options={'verify_exp': False})
                         user_id = payload.get('user_id')
                         user = User.objects.get(id=user_id)
-                        exp = datetime.utcnow() + timedelta(days=1)  # 设置新的过期时间
+                        exp = datetime.utcnow() + timedelta(weeks=4)  # 设置新的过期时间
                         new_payload = {
                             'user_id': user.id,
                             'username': user.username,
