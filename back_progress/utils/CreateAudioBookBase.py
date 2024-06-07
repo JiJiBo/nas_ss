@@ -176,12 +176,12 @@ class CreateAudioBookBase:
         await self.saveMaxProgress(totalChapters)
         await self.saveName(self.book_name)
         processedChapters = 0
+        continueChapter = 0
         page = 0
         for title, content in chapters:
 
             if len(content) == 0:
-                totalChapters -= 1
-                processedChapters -= 1
+                continueChapter += 1
                 print(f"跳过 {title}，没有内容")
                 continue
             page += 1
@@ -199,7 +199,7 @@ class CreateAudioBookBase:
             countTime += allTme
             processedChapters += 1
 
-            progress = processedChapters / totalChapters
+            progress = (processedChapters - continueChapter) / (totalChapters - continueChapter)
             estimatedTotalTime = countTime / progress
             remainingTime = estimatedTotalTime - countTime
 
