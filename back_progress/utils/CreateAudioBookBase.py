@@ -28,13 +28,13 @@ class CreateAudioBookBase:
         self.type = "base"
 
     def del_all_files(self):
-        if self.type == "link":
-            for root, dirs, files in os.walk(self.saveBookPath):
-                for file in files:
-                    file_path = os.path.join(root, file)
-                    os.remove(file_path)
-        elif self.type == "path":
-            os.remove(self.saveBookPath)
+        # if self.type == "link":
+        #     for root, dirs, files in os.walk(self.saveBookPath):
+        #         for file in files:
+        #             file_path = os.path.join(root, file)
+        #             os.remove(file_path)
+        # elif self.type == "path":
+        #     os.remove(self.saveBookPath)
         for root, dirs, files in os.walk(self.saveAudioPath):
             for file in files:
                 file_path = os.path.join(root, file)
